@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre école | Cardinal Malula</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+            line-height: 1.7;
+        }
+
+        header {
+            background: #102a43;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #102a43, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        section {
+            padding: 65px 8%;
+        }
+
+        .title {
+            font-size: 30px;
+            text-align: center;
+            color: #102a43;
+            margin-bottom: 25px;
+        }
+
+        .intro {
+            background: white;
+            text-align: center;
+        }
+
+        .intro p {
+            max-width: 850px;
+            margin: auto;
+            color: #667085;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #102a43;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #667085;
+        }
+
+        .vision {
+            background: #102a43;
+            color: white;
+            text-align: center;
+        }
+
+        .vision .title {
+            color: white;
+        }
+
+        .vision p {
+            max-width: 800px;
+            margin: auto;
+            color: #dbeafe;
+        }
+
+        .levels {
+            background: #eef4ff;
+        }
+
+        .back {
+            display: inline-block;
+            background: white;
+            color: #102a43;
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        @media(max-width: 600px) {
+            .hero h1 {
+                font-size: 31px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            section {
+                padding: 50px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">CARDINAL MALULA</div>
+    <a href="index.html">← Retour à l'accueil</a>
+</header>
+
+<div class="hero">
+    <h1>Bienvenue chez nous</h1>
+    <p>Complexe scolaire Cardinal Malula</p>
+    <p><strong>Le meilleur est ma destinée.</strong></p>
+</div>
+
+<section class="intro">
+    <h2 class="title">Qui sommes-nous ?</h2>
+
+    <p>
+        Le Complexe scolaire Cardinal Malula est un établissement
+        d'enseignement situé à Kinshasa, en République démocratique
+        du Congo. Notre engagement est d'accompagner les élèves
+        dans leur formation scolaire et leur développement personnel.
+        Nous croyons en une éducation fondée sur le travail,
+        la discipline, le respect et l'excellence.
+    </p>
+</section>
+
+<section>
+    <h2 class="title">Nos valeurs fondamentales</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🎓 Excellence</h3>
+            <p>
+                Encourager chaque élève à développer ses compétences
+                et à viser la réussite.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🤝 Respect</h3>
+            <p>
+                Cultiver le respect mutuel, la solidarité
+                et la bonne conduite.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📚 Discipline</h3>
+            <p>
+                Promouvoir le sérieux, l'organisation
+                et le goût du travail.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🌟 Responsabilité</h3>
+            <p>
+                Préparer les élèves à devenir des citoyens
+                responsables et engagés.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="vision">
+    <h2 class="title">Notre vision</h2>
+
+    <p>
+        Former une jeunesse instruite, ambitieuse et responsable,
+        capable de contribuer positivement au développement
+        de la société et de construire un avenir meilleur.
+    </p>
+</section>
+
+<section class="levels">
+    <h2 class="title">Notre engagement éducatif</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Éducation de base</h3>
+            <p>Accompagner les élèves dans l'acquisition
+            des connaissances fondamentales.</p>
+        </div>
+
+        <div class="card">
+            <h3>Humanités scientifiques</h3>
+            <p>Développer la réflexion, l'analyse
+            et l'esprit scientifique.</p>
+        </div>
+
+        <div class="card">
+            <h3>Humanités littéraires</h3>
+            <p>Valoriser la culture, les langues
+            et les capacités d'expression.</p>
+        </div>
+
+        <div class="card">
+            <h3>Humanités commerciales</h3>
+            <p>Développer les connaissances économiques
+            et commerciales.</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p><strong>Complexe scolaire Cardinal Malula</strong></p>
+    <p>Le meilleur est ma destinée.</p>
+    <p>Kinshasa, RDC</p>
+    <p>© 2026 — Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
