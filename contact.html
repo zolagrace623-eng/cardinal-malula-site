@@ -1,1 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact — Cardinal Malula</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        header {
+            background: #102a43;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .back {
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border: 1px solid white;
+            border-radius: 8px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #102a43, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        section {
+            padding: 60px 8%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 40px;
+            color: #667085;
+            line-height: 1.7;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+
+        .info-card h3 {
+            color: #102a43;
+            margin: 15px 0 10px;
+        }
+
+        .info-card p {
+            color: #667085;
+            line-height: 1.7;
+        }
+
+        .form-container {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #102a43;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .button {
+            display: inline-block;
+            border: none;
+            padding: 14px 25px;
+            background: #2563eb;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin: 7px;
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            section {
+                padding: 50px 6%;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        CARDINAL MALULA
+    </div>
+
+    <a href="index.html" class="back">
+        ← Accueil
+    </a>
+
+</header>
+
+<section class="hero">
+
+    <h1>
+        Contactez-nous
+    </h1>
+
+    <p>
+        Nous sommes à votre écoute.
+    </p>
+
+</section>
+
+<section>
+
+    <h2 class="title">
+        Nos coordonnées
+    </h2>
+
+    <p class="subtitle">
+        Pour toute question concernant notre établissement,
+        nos formations ou la vie scolaire, vous pouvez nous contacter.
+    </p>
+
+    <div class="contact-grid">
+
+        <div class="info-card">
+
+            <div style="font-size: 35px;">
+                📍
+            </div>
+
+            <h3>
+                Adresse
+            </h3>
+
+            <p>
+                Kinshasa, République démocratique du Congo
+            </p>
+
+        </div>
+
+        <div class="info-card">
+
+            <div style="font-size: 35px;">
+                📞
+            </div>
+
+            <h3>
+                Téléphone
+            </h3>
+
+            <p>
+                Numéro à compléter
+            </p>
+
+        </div>
+
+        <div class="info-card">
+
+            <div style="font-size: 35px;">
+                📧
+            </div>
+
+            <h3>
+                E-mail
+            </h3>
+
+            <p>
+                Adresse e-mail à compléter
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="title">
+        Envoyez-nous un message
+    </h2>
+
+    <p class="subtitle">
+        Remplissez le formulaire ci-dessous pour nous contacter.
+    </p>
+
+    <div class="form-container">
+
+        <form>
+
+            <div class="form-group">
+
+                <label for="nom">
+                    Nom complet
+                </label>
+
+                <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    placeholder="Votre nom"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="email">
+                    Adresse e-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="votre@email.com"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="message">
+                    Votre message
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Écrivez votre message ici..."
+                    required
+                ></textarea>
+
+            </div>
+
+            <button type="submit" class="button">
+                Envoyer le message
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <p>
+        <strong>Complexe scolaire Cardinal Malula</strong>
+    </p>
+
+    <p>
+        Le meilleur est ma destinée.
+    </p>
+
+    <p>
+        © 2026 — Tous droits réservés.
+    </p>
+
+</footer>
+
+</body>
+</html>
 
