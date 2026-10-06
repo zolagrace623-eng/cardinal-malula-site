@@ -1,321 +1,211 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Annonce — Cardinal Malula</title>
+  <title>Sortie du Club de Science - Cardinal Malula</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #102a43;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #172033;
-        }
+    header {
+      background: #102a43;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-        header {
-            background: #102a43;
-            color: white;
-            padding: 18px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
 
-        .logo {
-            font-size: 21px;
-            font-weight: bold;
-        }
+    .retour {
+      display: block;
+      margin: 20px;
+      color: #102a43;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        .back {
-            color: white;
-            text-decoration: none;
-            padding: 10px 18px;
-            border: 1px solid white;
-            border-radius: 8px;
-        }
+    .annonce {
+      max-width: 850px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
 
-        .hero {
-            background: linear-gradient(135deg, #102a43, #2563eb);
-            color: white;
-            text-align: center;
-            padding: 65px 20px;
-        }
+    .categorie {
+      display: inline-block;
+      background: #102a43;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
 
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 12px;
-        }
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
 
-        .hero p {
-            font-size: 18px;
-        }
+    .date {
+      color: #666;
+      margin-bottom: 25px;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
+    .affiche {
+      height: 280px;
+      background: #e9eef5;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #66788a;
+      margin: 25px 0;
+      font-size: 18px;
+    }
 
-        .announcement {
-            background: white;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-        }
+    .description {
+      font-size: 17px;
+      line-height: 1.7;
+    }
 
-        .poster {
-            width: 100%;
-            min-height: 350px;
-            background: #e5e7eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 30px;
-        }
+    .infos {
+      background: #f4f7fb;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 25px;
+    }
 
-        .poster span {
-            color: #667085;
-            font-size: 18px;
-        }
+    .boutons {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
 
-        .content {
-            padding: 35px;
-        }
+    button {
+      border: none;
+      padding: 13px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      background: #102a43;
+      color: white;
+    }
 
-        .category {
-            color: #2563eb;
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
+    button:hover {
+      opacity: 0.9;
+    }
 
-        .content h2 {
-            color: #102a43;
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
+    footer {
+      margin-top: 50px;
+      padding: 25px;
+      background: #102a43;
+      color: white;
+      text-align: center;
+    }
 
-        .details {
-            display: grid;
-            gap: 12px;
-            margin-bottom: 25px;
-            color: #475467;
-        }
+    @media (max-width: 600px) {
+      .annonce {
+        margin: 20px;
+        padding: 20px;
+      }
 
-        .description {
-            color: #667085;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .button {
-            border: none;
-            padding: 13px 20px;
-            border-radius: 8px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .button.secondary {
-            background: #102a43;
-        }
-
-        .button:hover {
-            opacity: 0.9;
-        }
-
-        footer {
-            background: #102a43;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 70px;
-        }
-
-        footer p {
-            margin: 7px;
-        }
-
-        @media (max-width: 700px) {
-
-            header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .content {
-                padding: 25px;
-            }
-
-            .content h2 {
-                font-size: 25px;
-            }
-
-            .poster {
-                min-height: 250px;
-            }
-        }
-    </style>
+      h2 {
+        font-size: 26px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-
-    <div class="logo">
-        CARDINAL MALULA
-    </div>
-
-    <a href="actualites.html" class="back">
-        ← Actualités
-    </a>
-
+  <h1>CARDINAL MALULA</h1>
 </header>
 
-<section class="hero">
+<a href="actualites.html" class="retour">← Retour aux actualités</a>
 
-    <h1>
-        Annonce de l'école
-    </h1>
+<main class="annonce">
 
-    <p>
-        Complexe scolaire Cardinal Malula
-    </p>
+  <span class="categorie">🔬 CLUB DE SCIENCE</span>
 
-</section>
+  <h2>Sortie du Club de Science</h2>
 
-<main class="container">
+  <div class="date">
+    📅 Date : À venir
+  </div>
 
-    <article class="announcement">
+  <div class="affiche">
+    🖼️ L'affiche de la sortie sera ajoutée ici
+  </div>
 
-        <div class="poster">
-            <span>
-                🖼️ L'affiche de l'annonce apparaîtra ici
-            </span>
-        </div>
+  <p class="description">
+    Le Complexe scolaire Cardinal Malula annonce une prochaine
+    sortie organisée par le Club de Science.
+  </p>
 
-        <div class="content">
+  <p class="description">
+    Cette activité permettra aux élèves de découvrir davantage
+    le monde scientifique, d'apprendre autrement et de vivre
+    une expérience éducative enrichissante.
+  </p>
 
-            <div class="category">
-                Actualité scolaire
-            </div>
+  <div class="infos">
+    <strong>📍 Lieu :</strong> À déterminer<br><br>
+    <strong>📅 Date :</strong> À déterminer<br><br>
+    <strong>🔬 Organisateur :</strong> Club de Science
+  </div>
 
-            <h2>
-                Titre de l'annonce
-            </h2>
-
-            <div class="details">
-
-                <div>
-                    📅 <strong>Date :</strong>
-                    À compléter
-                </div>
-
-                <div>
-                    📍 <strong>Lieu :</strong>
-                    À compléter
-                </div>
-
-            </div>
-
-            <p class="description">
-                La description complète de l'annonce apparaîtra ici.
-                Cette partie permettra de présenter toutes les informations
-                importantes concernant l'événement ou l'annonce.
-            </p>
-
-            <div class="actions">
-
-                <button class="button" onclick="partager()">
-                    ↗️ Partager
-                </button>
-
-                <button class="button secondary" onclick="copierLien()">
-                    📋 Copier le lien
-                </button>
-
-            </div>
-
-        </div>
-
-    </article>
+  <div class="boutons">
+    <button onclick="partager()">↗️ Partager</button>
+    <button onclick="copierLien()">📋 Copier le lien</button>
+  </div>
 
 </main>
 
 <footer>
-
-    <p>
-        <strong>Complexe scolaire Cardinal Malula</strong>
-    </p>
-
-    <p>
-        Le meilleur est ma destinée.
-    </p>
-
-    <p>
-        © 2026 — Tous droits réservés.
-    </p>
-
+  <p>Complexe scolaire Cardinal Malula</p>
+  <p>« Le meilleur est ma destinée. »</p>
 </footer>
 
 <script>
 
 function partager() {
 
-    if (navigator.share) {
+  if (navigator.share) {
 
-        navigator.share({
-            title: document.title,
-            text: "Découvrez cette annonce du Complexe scolaire Cardinal Malula.",
-            url: window.location.href
-        });
+    navigator.share({
+      title: "Sortie du Club de Science",
+      text: "Découvrez l'annonce de la sortie du Club de Science du Complexe scolaire Cardinal Malula.",
+      url: window.location.href
+    });
 
-    } else {
+  } else {
 
-        copierLien();
+    copierLien();
 
-        alert("Le lien de l'annonce a été copié.");
+  }
 
-    }
 }
 
 function copierLien() {
 
-    navigator.clipboard.writeText(window.location.href)
-        .then(function() {
+  navigator.clipboard.writeText(window.location.href);
 
-            alert("Lien copié ! Vous pouvez maintenant le partager.");
-
-        })
-        .catch(function() {
-
-            alert("Impossible de copier automatiquement le lien.");
-
-        });
+  alert("Lien de l'annonce copié !");
 
 }
 
@@ -323,4 +213,3 @@ function copierLien() {
 
 </body>
 </html>
-
