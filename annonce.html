@@ -181,13 +181,25 @@
     </p>
 
     <div class="infos">
-        <strong>📍 Lieu :</strong> <span id="lieu">À déterminer</span>
+
+        <strong>📍 Lieu :</strong>
+        <span id="lieu">À déterminer</span>
+
         <br><br>
 
-        <strong>📅 Date :</strong> <span id="dateInfo">À déterminer</span>
+        <strong>📅 Date :</strong>
+        <span id="dateInfo">À déterminer</span>
+
         <br><br>
 
-        <strong>🔬 Organisateur :</strong> Club de Science
+        <strong>🕐 Heure :</strong>
+        <span id="heure">À déterminer</span>
+
+        <br><br>
+
+        <strong>🔬 Organisateur :</strong>
+        <span id="organisateur">Club de Science</span>
+
     </div>
 
     <div class="boutons">
@@ -229,70 +241,13 @@ const annonces = {
         titre: "Sortie du Club de Science",
         date: "📅 Date : À venir",
         lieu: "À déterminer",
+        heure: "À déterminer",
+        organisateur: "Club de Science",
         description: "Le Complexe scolaire Cardinal Malula annonce une prochaine sortie organisée par le Club de Science.",
         description2: "Cette activité permettra aux élèves de découvrir davantage le monde scientifique, d'apprendre autrement et de vivre une expérience éducative enrichissante."
-    }
+    },
 
-};
-
-
-const params = new URLSearchParams(window.location.search);
-
-const id = params.get("id");
-
-
-if (id && annonces[id]) {
-
-    const annonce = annonces[id];
-
-    document.getElementById("categorie").textContent = annonce.categorie;
-
-    document.getElementById("titre").textContent = annonce.titre;
-
-    document.getElementById("date").textContent = annonce.date;
-
-    document.getElementById("lieu").textContent = annonce.lieu;
-
-    document.getElementById("dateInfo").textContent =
-        annonce.date.replace("📅 Date : ", "");
-
-    document.getElementById("description").textContent =
-        annonce.description;
-
-    document.getElementById("description2").textContent =
-        annonce.description2;
-
-}
-
-
-function partager() {
-
-    if (navigator.share) {
-
-        navigator.share({
-            title: document.getElementById("titre").textContent,
-            text: "Découvrez cette annonce du Complexe scolaire Cardinal Malula.",
-            url: window.location.href
-        });
-
-    } else {
-
-        copierLien();
-
-    }
-
-}
-
-
-function copierLien() {
-
-    navigator.clipboard.writeText(window.location.href);
-
-    alert("Lien de l'annonce copié !");
-
-}
-
-</script>
-
-</body>
-</html>
+    "presentation-gouvernement-bde": {
+        categorie: "VIE SCOLAIRE / BDE",
+        titre: "Présentation du gouvernement du BDE",
+        date: "
