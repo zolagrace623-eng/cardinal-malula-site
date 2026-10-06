@@ -174,7 +174,7 @@
         sortie organisée par le Club de Science.
     </p>
 
-    <p class="description">
+    <p class="description" id="description2">
         Cette activité permettra aux élèves de découvrir davantage
         le monde scientifique, d'apprendre autrement et de vivre
         une expérience éducative enrichissante.
@@ -222,6 +222,49 @@
 
 <script>
 
+const annonces = {
+
+    "sortie-club-science": {
+        categorie: "CLUB DE SCIENCE",
+        titre: "Sortie du Club de Science",
+        date: "📅 Date : À venir",
+        lieu: "À déterminer",
+        description: "Le Complexe scolaire Cardinal Malula annonce une prochaine sortie organisée par le Club de Science.",
+        description2: "Cette activité permettra aux élèves de découvrir davantage le monde scientifique, d'apprendre autrement et de vivre une expérience éducative enrichissante."
+    }
+
+};
+
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("id");
+
+
+if (id && annonces[id]) {
+
+    const annonce = annonces[id];
+
+    document.getElementById("categorie").textContent = annonce.categorie;
+
+    document.getElementById("titre").textContent = annonce.titre;
+
+    document.getElementById("date").textContent = annonce.date;
+
+    document.getElementById("lieu").textContent = annonce.lieu;
+
+    document.getElementById("dateInfo").textContent =
+        annonce.date.replace("📅 Date : ", "");
+
+    document.getElementById("description").textContent =
+        annonce.description;
+
+    document.getElementById("description2").textContent =
+        annonce.description2;
+
+}
+
+
 function partager() {
 
     if (navigator.share) {
@@ -239,6 +282,7 @@ function partager() {
     }
 
 }
+
 
 function copierLien() {
 
