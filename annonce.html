@@ -1,211 +1,250 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sortie du Club de Science - Cardinal Malula</title>
+    <title>Annonce — Cardinal Malula</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #102a43;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      background: #102a43;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
 
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
+        header {
+            background: #102a43;
+            color: white;
+            padding: 18px 7%;
+            text-align: center;
+        }
 
-    .retour {
-      display: block;
-      margin: 20px;
-      color: #102a43;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
 
-    .annonce {
-      max-width: 850px;
-      margin: 30px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
+        .back {
+            display: inline-block;
+            margin: 20px 7%;
+            color: #102a43;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    .categorie {
-      display: inline-block;
-      background: #102a43;
-      color: white;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 14px;
-    }
+        .annonce {
+            max-width: 850px;
+            margin: 20px auto 60px;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
 
-    h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
+        .categorie {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: bold;
+        }
 
-    .date {
-      color: #666;
-      margin-bottom: 25px;
-    }
+        h1 {
+            color: #102a43;
+            font-size: 36px;
+            margin: 15px 0 10px;
+        }
 
-    .affiche {
-      height: 280px;
-      background: #e9eef5;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #66788a;
-      margin: 25px 0;
-      font-size: 18px;
-    }
+        .date {
+            color: #667085;
+            margin-bottom: 25px;
+        }
 
-    .description {
-      font-size: 17px;
-      line-height: 1.7;
-    }
+        .affiche {
+            height: 280px;
+            background: #e9eef5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #66788a;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
 
-    .infos {
-      background: #f4f7fb;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 25px;
-    }
+        .description {
+            color: #667085;
+            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
 
-    .boutons {
-      display: flex;
-      gap: 12px;
-      margin-top: 25px;
-      flex-wrap: wrap;
-    }
+        .infos {
+            background: #f4f7fb;
+            padding: 20px;
+            border-radius: 12px;
+            line-height: 1.8;
+            margin-top: 25px;
+        }
 
-    button {
-      border: none;
-      padding: 13px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: bold;
-      background: #102a43;
-      color: white;
-    }
+        .boutons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
 
-    button:hover {
-      opacity: 0.9;
-    }
+        button {
+            border: none;
+            padding: 13px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            background: #102a43;
+            color: white;
+        }
 
-    footer {
-      margin-top: 50px;
-      padding: 25px;
-      background: #102a43;
-      color: white;
-      text-align: center;
-    }
+        button:hover {
+            background: #2563eb;
+        }
 
-    @media (max-width: 600px) {
-      .annonce {
-        margin: 20px;
-        padding: 20px;
-      }
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
 
-      h2 {
-        font-size: 26px;
-      }
-    }
-  </style>
+        footer p {
+            margin: 7px;
+        }
+
+        @media (max-width: 600px) {
+            .annonce {
+                margin: 20px;
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header>
-  <h1>CARDINAL MALULA</h1>
+    <div class="logo">
+        CARDINAL MALULA
+    </div>
 </header>
 
-<a href="actualites.html" class="retour">← Retour aux actualités</a>
+<a href="actualites.html" class="back">
+    ← Retour aux actualités
+</a>
 
 <main class="annonce">
 
-  <span class="categorie">🔬 CLUB DE SCIENCE</span>
+    <div class="categorie" id="categorie">
+        CLUB DE SCIENCE
+    </div>
 
-  <h2>Sortie du Club de Science</h2>
+    <h1 id="titre">
+        Sortie du Club de Science
+    </h1>
 
-  <div class="date">
-    📅 Date : À venir
-  </div>
+    <div class="date" id="date">
+        📅 Date : À venir
+    </div>
 
-  <div class="affiche">
-    🖼️ L'affiche de la sortie sera ajoutée ici
-  </div>
+    <div class="affiche">
+        🖼️ L'affiche de la sortie sera ajoutée ici
+    </div>
 
-  <p class="description">
-    Le Complexe scolaire Cardinal Malula annonce une prochaine
-    sortie organisée par le Club de Science.
-  </p>
+    <p class="description" id="description">
+        Le Complexe scolaire Cardinal Malula annonce une prochaine
+        sortie organisée par le Club de Science.
+    </p>
 
-  <p class="description">
-    Cette activité permettra aux élèves de découvrir davantage
-    le monde scientifique, d'apprendre autrement et de vivre
-    une expérience éducative enrichissante.
-  </p>
+    <p class="description">
+        Cette activité permettra aux élèves de découvrir davantage
+        le monde scientifique, d'apprendre autrement et de vivre
+        une expérience éducative enrichissante.
+    </p>
 
-  <div class="infos">
-    <strong>📍 Lieu :</strong> À déterminer<br><br>
-    <strong>📅 Date :</strong> À déterminer<br><br>
-    <strong>🔬 Organisateur :</strong> Club de Science
-  </div>
+    <div class="infos">
+        <strong>📍 Lieu :</strong> <span id="lieu">À déterminer</span>
+        <br><br>
 
-  <div class="boutons">
-    <button onclick="partager()">↗️ Partager</button>
-    <button onclick="copierLien()">📋 Copier le lien</button>
-  </div>
+        <strong>📅 Date :</strong> <span id="dateInfo">À déterminer</span>
+        <br><br>
+
+        <strong>🔬 Organisateur :</strong> Club de Science
+    </div>
+
+    <div class="boutons">
+
+        <button onclick="partager()">
+            ↗️ Partager
+        </button>
+
+        <button onclick="copierLien()">
+            📋 Copier le lien
+        </button>
+
+    </div>
 
 </main>
 
 <footer>
-  <p>Complexe scolaire Cardinal Malula</p>
-  <p>« Le meilleur est ma destinée. »</p>
+
+    <p>
+        <strong>Complexe scolaire Cardinal Malula</strong>
+    </p>
+
+    <p>
+        Le meilleur est ma destinée.
+    </p>
+
+    <p>
+        © 2026 — Tous droits réservés.
+    </p>
+
 </footer>
 
 <script>
 
 function partager() {
 
-  if (navigator.share) {
+    if (navigator.share) {
 
-    navigator.share({
-      title: "Sortie du Club de Science",
-      text: "Découvrez l'annonce de la sortie du Club de Science du Complexe scolaire Cardinal Malula.",
-      url: window.location.href
-    });
+        navigator.share({
+            title: document.getElementById("titre").textContent,
+            text: "Découvrez cette annonce du Complexe scolaire Cardinal Malula.",
+            url: window.location.href
+        });
 
-  } else {
+    } else {
 
-    copierLien();
+        copierLien();
 
-  }
+    }
 
 }
 
 function copierLien() {
 
-  navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(window.location.href);
 
-  alert("Lien de l'annonce copié !");
+    alert("Lien de l'annonce copié !");
 
 }
 
