@@ -1,1 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Annonce — Cardinal Malula</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        header {
+            background: #102a43;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .back {
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border: 1px solid white;
+            border-radius: 8px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #102a43, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .announcement {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .poster {
+            width: 100%;
+            min-height: 350px;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .poster span {
+            color: #667085;
+            font-size: 18px;
+        }
+
+        .content {
+            padding: 35px;
+        }
+
+        .category {
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .content h2 {
+            color: #102a43;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: #475467;
+        }
+
+        .description {
+            color: #667085;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            border: none;
+            padding: 13px 20px;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .button.secondary {
+            background: #102a43;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 70px;
+        }
+
+        footer p {
+            margin: 7px;
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .content h2 {
+                font-size: 25px;
+            }
+
+            .poster {
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        CARDINAL MALULA
+    </div>
+
+    <a href="actualites.html" class="back">
+        ← Actualités
+    </a>
+
+</header>
+
+<section class="hero">
+
+    <h1>
+        Annonce de l'école
+    </h1>
+
+    <p>
+        Complexe scolaire Cardinal Malula
+    </p>
+
+</section>
+
+<main class="container">
+
+    <article class="announcement">
+
+        <div class="poster">
+            <span>
+                🖼️ L'affiche de l'annonce apparaîtra ici
+            </span>
+        </div>
+
+        <div class="content">
+
+            <div class="category">
+                Actualité scolaire
+            </div>
+
+            <h2>
+                Titre de l'annonce
+            </h2>
+
+            <div class="details">
+
+                <div>
+                    📅 <strong>Date :</strong>
+                    À compléter
+                </div>
+
+                <div>
+                    📍 <strong>Lieu :</strong>
+                    À compléter
+                </div>
+
+            </div>
+
+            <p class="description">
+                La description complète de l'annonce apparaîtra ici.
+                Cette partie permettra de présenter toutes les informations
+                importantes concernant l'événement ou l'annonce.
+            </p>
+
+            <div class="actions">
+
+                <button class="button" onclick="partager()">
+                    ↗️ Partager
+                </button>
+
+                <button class="button secondary" onclick="copierLien()">
+                    📋 Copier le lien
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer>
+
+    <p>
+        <strong>Complexe scolaire Cardinal Malula</strong>
+    </p>
+
+    <p>
+        Le meilleur est ma destinée.
+    </p>
+
+    <p>
+        © 2026 — Tous droits réservés.
+    </p>
+
+</footer>
+
+<script>
+
+function partager() {
+
+    if (navigator.share) {
+
+        navigator.share({
+            title: document.title,
+            text: "Découvrez cette annonce du Complexe scolaire Cardinal Malula.",
+            url: window.location.href
+        });
+
+    } else {
+
+        copierLien();
+
+        alert("Le lien de l'annonce a été copié.");
+
+    }
+}
+
+function copierLien() {
+
+    navigator.clipboard.writeText(window.location.href)
+        .then(function() {
+
+            alert("Lien copié ! Vous pouvez maintenant le partager.");
+
+        })
+        .catch(function() {
+
+            alert("Impossible de copier automatiquement le lien.");
+
+        });
+
+}
+
+</script>
+
+</body>
+</html>
 
