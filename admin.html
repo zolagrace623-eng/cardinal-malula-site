@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administration — Cardinal Malula</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        header {
+            background: #102a43;
+            color: white;
+            padding: 25px 7%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #dbeafe;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 35px auto;
+            padding: 0 18px;
+        }
+
+        .notice {
+            background: #fff7db;
+            border-left: 5px solid #e5a000;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .formulaire {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        h2 {
+            color: #102a43;
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 17px 0 8px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #102a43;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        .retour {
+            display: inline-block;
+            margin-top: 22px;
+            color: #102a43;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #resultat {
+            display: none;
+            margin-top: 25px;
+            padding: 18px;
+            background: #e8f7ed;
+            border-radius: 10px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        #resultat a {
+            color: #14532d;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 45px;
+        }
+
+        @media (max-width: 600px) {
+            .formulaire {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🔐 Administration</h1>
+    <p>Complexe scolaire Cardinal Malula</p>
+</header>
+
+<main class="container">
+
+    <div class="notice">
+        <strong>Attention :</strong> cette première version est un
+        prototype public. Elle ne possède pas encore de connexion
+        sécurisée et ne publie pas automatiquement les annonces
+        sur le site.
+    </div>
+
+    <section class="formulaire">
+
+        <h2>📢 Préparer une annonce</h2>
+
+        <form id="formAnnonce">
+
+            <label for="categorie">Catégorie</label>
+            <select id="categorie" required>
+                <option value="">Choisir une catégorie</option>
+                <option value="VIE SCOLAIRE / BDE">Vie scolaire / BDE</option>
+                <option value="CLUB DE SCIENCE">Club de Science</option>
+                <option value="INFORMATIONS">Informations importantes</option>
+                <option value="ACTIVITÉS SCOLAIRES">Activités scolaires</option>
+            </select>
+
+            <label for="titre">Titre de l'annonce</label>
+            <input
+                type="text"
+                id="titre"
+                placeholder="Ex. : Sortie du Club de Science"
+                required
+            >
+
+            <label for="date">Date de l'événement</label>
+            <input type="date" id="date">
+
+            <label for="heure">Heure</label>
+            <input
+                type="text"
+                id="heure"
+                placeholder="Ex. : 7h10 à 7h30"
+            >
+
+            <label for="lieu">Lieu</label>
+            <input
+                type="text"
+                id="lieu"
+                placeholder="Ex. : École"
+            >
+
+            <label for="organisateur">Organisateur</label>
+            <input
+                type="text"
+                id="organisateur"
+                placeholder="Ex. : BDE"
+            >
+
+            <label for="description">Description de l'annonce</label>
+            <textarea
+                id="description"
+                placeholder="Écris ici les informations principales..."
+                required
+            ></textarea>
+
+            <label for="affiche">Affiche de l'annonce (facultatif)</label>
+            <input
+                type="file"
+                id="affiche"
+                accept="image/*"
+            >
+
+            <button type="submit">
+                Préparer l'annonce
+            </button>
+
+        </form>
+
+        <div id="resultat" aria-live="polite"></div>
+
+        <a href="actualites.html" class="retour">
+            ← Retour aux actualités
+        </a>
+
+    </section>
+
+</main>
+
+<footer>
+    <p><strong>Complexe scolaire Cardinal Malula</strong></p>
+    <p>Le meilleur est ma destinée.</p>
+</footer>
+
+<script>
+    document.getElementById("formAnnonce").addEventListener(
+        "submit",
+        function(event) {
+            event.preventDefault();
+
+            const titre = document.getElementById("titre").value.trim();
+            const categorie = document.getElementById("categorie").value;
+            const date = document.getElementById("date").value;
+            const heure = document.getElementById("heure").value.trim();
+            const lieu = document.getElementById("lieu").value.trim();
+            const organisateur = document.getElementById("organisateur").value.trim();
+            const description = document.getElementById("description").value.trim();
+            const affiche = document.getElementById("affiche").files[0];
+
+            if (!titre || !categorie || !description) {
+                alert("Remplis les champs obligatoires.");
+                return;
+            }
+
+            const annonce = {
+                titre,
+                categorie,
+                date,
+                heure,
+                lieu,
+                organisateur,
+                description
+            };
+
+            const resultat = document.getElementById("resultat");
+
+            resultat.replaceChildren();
+
+            const titreResultat = document.createElement("h3");
+            titreResultat.textContent = "✅ Annonce préparée";
+            resultat.appendChild(titreResultat);
+
+            const details = document.createElement("p");
+            details.textContent =
+                "Catégorie : " + annonce.categorie +
+                " | Titre : " + annonce.titre +
+                " | Date : " + (annonce.date || "À préciser") +
+                " | Heure : " + (annonce.heure || "À préciser") +
+                " | Lieu : " + (annonce.lieu || "À préciser") +
+                " | Organisateur : " + (annonce.organisateur || "À préciser") +
+                " | Description : " + annonce.description;
+
+            resultat.appendChild(details);
+
+            if (affiche) {
+                const image = document.createElement("img");
+                image.src = URL.createObjectURL(affiche);
+                image.alt = "Aperçu de l'affiche";
+                image.style.width = "100%";
+                image.style.maxWidth = "400px";
+                image.style.display = "block";
+                image.style.marginTop = "15px";
+                image.style.borderRadius = "8px";
+                resultat.appendChild(image);
+            }
+
+            const avertissement = document.createElement("p");
+            avertissement.textContent =
+                "Cette annonce est seulement préparée dans cette page. " +
+                "Elle n'est pas encore enregistrée ni publiée sur le site.";
+            avertissement.style.marginTop = "15px";
+            resultat.appendChild(avertissement);
+
+            resultat.style.display = "block";
+            resultat.scrollIntoView({ behavior: "smooth" });
+        }
+    );
+</script>
+
+</body>
+</html>
