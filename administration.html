@@ -20,10 +20,10 @@ button{background:#2563eb;color:white;padding:12px 17px;border:0;border-radius:7
 button:hover{background:#1d4ed8}
 button:disabled{opacity:.6;cursor:wait}
 .secondaire{background:#526579}
-#message,#messagePublication,#messageRecuperation{line-height:1.5;overflow-wrap:anywhere}
-.cache{display:none}
+.cache{display:none!important}
+.message{line-height:1.5;overflow-wrap:anywhere}
+.lien{display:inline-block;margin:12px 0;color:#2563eb;text-decoration:underline;cursor:pointer}
 footer{text-align:center;padding:20px;color:#526579;font-size:13px}
-.lien{color:#2563eb;cursor:pointer;text-decoration:underline;display:inline-block;margin:12px 0}
 </style>
 </head>
 
@@ -48,24 +48,29 @@ footer{text-align:center;padding:20px;color:#526579;font-size:13px}
     <button type="submit">Se connecter</button>
   </form>
 
-  <span class="lien" id="ouvrirRecuperation">Mot de passe oublié ?</span>
-  <p id="message" aria-live="polite"></p>
+  <button type="button" id="ouvrirRecuperation" class="secondaire">
+    Mot de passe oublié ?
+  </button>
+  <p id="message" class="message" aria-live="polite"></p>
 </section>
 
 <section class="carte cache" id="recuperation">
   <h2>Réinitialiser le mot de passe</h2>
-  <p>Entre ton adresse e-mail pour recevoir un nouveau lien.</p>
+  <p>Entre ton adresse e-mail pour recevoir un lien de réinitialisation.</p>
+
   <form id="formRecuperation">
     <label for="emailRecuperation">Adresse e-mail</label>
     <input id="emailRecuperation" type="email" required placeholder="Ton adresse e-mail">
-    <button type="submit">Envoyer le lien</button>
+    <button type="submit" id="boutonEnvoiLien">Envoyer le lien</button>
     <button type="button" class="secondaire" id="retourConnexion">Retour</button>
   </form>
-  <p id="messageRecuperation" aria-live="polite"></p>
+
+  <p id="messageRecuperation" class="message" aria-live="polite"></p>
 </section>
 
 <section class="carte cache" id="nouveauMotDePasse">
   <h2>Choisir un nouveau mot de passe</h2>
+
   <form id="formNouveauMotDePasse">
     <label for="nouveauMotDePasseChamp">Nouveau mot de passe</label>
     <input id="nouveauMotDePasseChamp" type="password" minlength="8" autocomplete="new-password" required placeholder="8 caractères minimum">
@@ -75,7 +80,8 @@ footer{text-align:center;padding:20px;color:#526579;font-size:13px}
 
     <button type="submit">Enregistrer le nouveau mot de passe</button>
   </form>
-  <p id="messageNouveauMotDePasse" aria-live="polite"></p>
+
+  <p id="messageNouveauMotDePasse" class="message" aria-live="polite"></p>
 </section>
 
 <section class="carte cache" id="publication">
@@ -114,11 +120,13 @@ footer{text-align:center;padding:20px;color:#526579;font-size:13px}
     <button type="submit">Publier l'annonce</button>
   </form>
 
-  <p id="messagePublication" aria-live="polite"></p>
+  <p id="messagePublication" class="message" aria-live="polite"></p>
+
   <hr style="border:0;border-top:1px solid #ddd;margin:25px 0">
 
   <h2>Mes annonces</h2>
   <div id="listeAnnonces">Chargement des annonces...</div>
+
   <button type="button" class="secondaire" id="deconnexion">Se déconnecter</button>
 </section>
 </main>
@@ -126,22 +134,12 @@ footer{text-align:center;padding:20px;color:#526579;font-size:13px}
 <footer>Le meilleur est ma destinée.</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+"use strict";
+
 const SUPABASE_URL = "https://tqukwjzoimhwovelzkxe.supabase.co";
 const SUPABASE_KEY = "sb_publishable_cFolYLhll8ZhhhpHk0Pq6Q_jFsJU41m";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY,
-  {
-    auth: {
-      flowType: "implicit",
-      detectSessionInUrl: true,
-      persistSession: true,
-      autoRefreshToken: true
-    }
-  }
-);
 
 const connexion = document.getElementById("connexion");
 const recuperation = document.getElementById("recuperation");
@@ -158,6 +156,39 @@ function afficherSection(section) {
 function message(id, texte) {
   document.getElementById(id).textContent = texte;
 }
+
+/* Le bouton fonctionne indépendamment de la connexion à Supabase. */
+document.getElementById("ouvrirRecuperation").addEventListener("click", function () {
+  document.getElementById("emailRecuperation").value =
+    document.getElementById("email").value.trim();
+
+  message("messageRecuperation", "");
+  afficherSection(recuperation);
+});
+
+document.getElementById("retourConnexion").addEventListener("click", function () {
+  message("messageRecuperation", "");
+  afficherSection(connexion);
+});
+
+/* Vérification de la bibliothèque Supabase. */
+if (!window.supabase || !window.supabase.createClient) {
+  message("message", "La bibliothèque de connexion ne s'est pas chargée. Vérifie ta connexion Internet et recharge la page.");
+  throw new Error("La bibliothèque Supabase est indisponible.");
+}
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY,
+  {
+    auth: {
+      flowType: "implicit",
+      detectSessionInUrl: true,
+      persistSession: true,
+      autoRefreshToken: true
+    }
+  }
+);
 
 async function verifierAdministrateur(session) {
   if (!session) {
@@ -202,7 +233,7 @@ async function chargerAnnonces() {
 
   liste.replaceChildren();
 
-  if (!data || !data.length) {
+  if (!data || data.length === 0) {
     liste.textContent = "Aucune annonce enregistrée.";
     return;
   }
@@ -224,12 +255,14 @@ async function chargerAnnonces() {
 
     bouton.addEventListener("click", async () => {
       bouton.disabled = true;
+
       const {error} = await supabaseClient
         .from("annonces")
         .update({publie: !annonce.publie})
         .eq("id", annonce.id);
 
       bouton.disabled = false;
+
       if (error) {
         alert("Erreur : " + error.message);
       } else {
@@ -252,38 +285,39 @@ document.getElementById("formConnexion").addEventListener("submit", async e => {
   });
 
   if (error) {
-    message("message", "Connexion impossible. Vérifie l'adresse e-mail et le mot de passe, puis réessaie.");
+    message("message", "Connexion impossible. Vérifie ton adresse e-mail et ton mot de passe.");
     return;
   }
 
   await verifierAdministrateur(data.session);
 });
 
-document.getElementById("ouvrirRecuperation").addEventListener("click", () => {
-  document.getElementById("emailRecuperation").value =
-    document.getElementById("email").value.trim();
-  afficherSection(recuperation);
-});
-
-document.getElementById("retourConnexion").addEventListener("click", () => {
-  afficherSection(connexion);
-});
-
 document.getElementById("formRecuperation").addEventListener("submit", async e => {
   e.preventDefault();
+
+  const bouton = document.getElementById("boutonEnvoiLien");
+  const email = document.getElementById("emailRecuperation").value.trim();
+
+  bouton.disabled = true;
   message("messageRecuperation", "Envoi du lien en cours...");
 
-  const email = document.getElementById("emailRecuperation").value.trim();
-  const redirectTo = https://zolagrace623-eng.github.io/cardinal-malula-site/administration.html;
+  try {
+    const redirectTo =
+      "https://zolagrace623-eng.github.io/cardinal-malula-site/administration.html";
 
-  const {error} = await supabaseClient.auth.resetPasswordForEmail(email, {
-    redirectTo
-  });
+    const {error} = await supabaseClient.auth.resetPasswordForEmail(email, {
+      redirectTo: redirectTo
+    });
 
-  if (error) {
-    message("messageRecuperation", "Erreur lors de l'envoi : " + error.message);
-  } else {
-    message("messageRecuperation", "Si cette adresse correspond à un compte, un lien de réinitialisation vient d'être envoyé. Vérifie ta boîte de réception.");
+    if (error) {
+      message("messageRecuperation", "Erreur : " + error.message);
+    } else {
+      message("messageRecuperation", "Demande envoyée. Vérifie ta boîte de réception et tes courriers indésirables.");
+    }
+  } catch (error) {
+    message("messageRecuperation", "Impossible d'envoyer la demande. Vérifie ta connexion Internet puis réessaie.");
+  } finally {
+    bouton.disabled = false;
   }
 });
 
@@ -305,17 +339,24 @@ document.getElementById("formNouveauMotDePasse").addEventListener("submit", asyn
 
   message("messageNouveauMotDePasse", "Modification en cours...");
 
-  const {error} = await supabaseClient.auth.updateUser({password: motDePasse});
+  try {
+    const {error} = await supabaseClient.auth.updateUser({
+      password: motDePasse
+    });
 
-  if (error) {
-    message("messageNouveauMotDePasse", "La modification a échoué. Le lien a peut-être expiré. Demande un nouveau lien et réessaie.");
-    return;
+    if (error) {
+      message("messageNouveauMotDePasse", "Échec de la modification : " + error.message + ". Demande un nouveau lien si nécessaire.");
+      return;
+    }
+
+    message("messageNouveauMotDePasse", "Mot de passe modifié ! Tu peux maintenant te connecter.");
+
+    await supabaseClient.auth.signOut();
+    history.replaceState(null, "", window.location.pathname);
+    afficherSection(connexion);
+  } catch (error) {
+    message("messageNouveauMotDePasse", "Une erreur est survenue. Demande un nouveau lien et réessaie.");
   }
-
-  message("messageNouveauMotDePasse", "Mot de passe modifié ! Tu peux maintenant te connecter.");
-  await supabaseClient.auth.signOut();
-  history.replaceState(null, "", window.location.pathname);
-  afficherSection(connexion);
 });
 
 document.getElementById("formAnnonce").addEventListener("submit", async e => {
@@ -349,7 +390,7 @@ document.getElementById("formAnnonce").addEventListener("submit", async e => {
     return;
   }
 
-  message("messagePublication", "Annonce publiée dans Supabase !");
+  message("messagePublication", "Annonce enregistrée dans Supabase !");
   document.getElementById("formAnnonce").reset();
   await chargerAnnonces();
 });
@@ -364,8 +405,8 @@ async function demarrer() {
   const hash = window.location.hash;
 
   if (hash.includes("error_description")) {
-    message("message", "Le lien de récupération a expiré ou n'est pas valide. Demande un nouveau lien.");
-    afficherSection(connexion);
+    message("messageNouveauMotDePasse", "Le lien a expiré ou n'est pas valide. Demande un nouveau lien.");
+    afficherSection(nouveauMotDePasse);
     return;
   }
 
@@ -377,7 +418,7 @@ async function demarrer() {
   const {data, error} = await supabaseClient.auth.getSession();
 
   if (error) {
-    message("message", "Impossible de vérifier la session. Réessaie.");
+    message("message", "Impossible de vérifier la session. Recharge la page.");
     afficherSection(connexion);
     return;
   }
