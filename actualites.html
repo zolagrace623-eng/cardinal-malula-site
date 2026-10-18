@@ -87,6 +87,8 @@
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.07);
             transition: 0.3s;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
 
         .card:hover {
@@ -109,6 +111,7 @@
         .card p {
             color: #667085;
             line-height: 1.7;
+            white-space: pre-wrap;
         }
 
         .important {
@@ -135,6 +138,30 @@
             background: #2563eb;
         }
 
+        .news-poster {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 420px;
+            object-fit: contain;
+            margin-top: 18px;
+            border-radius: 10px;
+            background: #f5f7fb;
+        }
+
+        .loading,
+        .empty,
+        .error-message {
+            text-align: center;
+            padding: 20px;
+            color: #667085;
+            line-height: 1.7;
+        }
+
+        .error-message {
+            color: #b42318;
+        }
+
         footer {
             background: #102a43;
             color: white;
@@ -147,7 +174,6 @@
         }
 
         @media (max-width: 700px) {
-
             header {
                 flex-direction: column;
                 gap: 15px;
@@ -168,36 +194,23 @@
 <body>
 
 <header>
-
-    <div class="logo">
-        CARDINAL MALULA
-    </div>
+    <div class="logo">CARDINAL MALULA</div>
 
     <a href="index.html" class="back">
         ← Accueil
     </a>
-
 </header>
 
-
 <section class="hero">
-
-    <h1>
-        Actualités de l'école
-    </h1>
+    <h1>Actualités de l'école</h1>
 
     <p>
         Découvrez les dernières nouvelles du Complexe scolaire Cardinal Malula.
     </p>
-
 </section>
 
-
 <section>
-
-    <h2 class="title">
-        Dernières nouvelles
-    </h2>
+    <h2 class="title">Dernières nouvelles</h2>
 
     <p class="subtitle">
         Retrouvez ici les informations importantes concernant
@@ -207,164 +220,312 @@
     <div class="cards">
 
         <div class="card">
+            <div class="date">ACTUALITÉ</div>
 
-            <div class="date">
-                ACTUALITÉ
-            </div>
-
-            <h3>
-                🏫 Bienvenue au Complexe scolaire Cardinal Malula
-            </h3>
+            <h3>🏫 Bienvenue au Complexe scolaire Cardinal Malula</h3>
 
             <p>
                 Notre établissement accueille les élèves dans un
                 environnement destiné à favoriser l'apprentissage,
                 la discipline et la réussite scolaire.
             </p>
-
         </div>
 
-
         <div class="card">
+            <div class="date">VIE SCOLAIRE</div>
 
-            <div class="date">
-                VIE SCOLAIRE
-            </div>
-
-            <h3>
-                🎓 Activités scolaires
-            </h3>
+            <h3>🎓 Activités scolaires</h3>
 
             <p>
                 Retrouvez prochainement les informations concernant
                 les activités, projets et événements organisés
                 au sein de notre établissement.
             </p>
-
         </div>
 
-
         <div class="card">
+            <div class="date">INFORMATION</div>
 
-            <div class="date">
-                INFORMATION
-            </div>
-
-            <h3>
-                📢 Informations importantes
-            </h3>
+            <h3>📢 Informations importantes</h3>
 
             <p>
                 Les annonces importantes destinées aux élèves,
                 aux parents et à toute la communauté scolaire
                 seront publiées sur cette page.
             </p>
-
         </div>
 
     </div>
-
 </section>
 
-
 <section class="important">
-
-    <h2 class="title">
-        Annonces
-    </h2>
+    <h2 class="title">Annonces</h2>
 
     <p class="subtitle">
-        Cette section sera utilisée pour communiquer rapidement
-        les informations importantes de l'établissement.
+        Consultez les communications officielles et les événements
+        publiés par l'administration de notre établissement.
     </p>
 
-
+    <!-- Les anciennes annonces sont conservées -->
     <div class="cards">
 
-
-        <!-- ANNONCE CLUB DE SCIENCE -->
-
         <div class="card announcement">
+            <div class="date">CLUB DE SCIENCE</div>
 
-            <div class="date">
-                CLUB DE SCIENCE
-            </div>
-
-            <h3>
-                🔬 Sortie du Club de Science
-            </h3>
+            <h3>🔬 Sortie du Club de Science</h3>
 
             <p>
                 Une sortie éducative organisée par le Club de Science
                 du Complexe scolaire Cardinal Malula.
             </p>
 
-            <a href="annonce.html?id=sortie-club-science" class="news-button">
+            <a
+                href="annonce.html?id=sortie-club-science"
+                class="news-button"
+            >
                 Voir l'annonce →
             </a>
-
         </div>
 
-
-        <!-- ANNONCE BDE -->
-
         <div class="card announcement">
+            <div class="date">VIE SCOLAIRE / BDE</div>
 
-            <div class="date">
-                VIE SCOLAIRE / BDE
-            </div>
-
-            <h3>
-                📢 Présentation du gouvernement du BDE
-            </h3>
+            <h3>📢 Présentation du gouvernement du BDE</h3>
 
             <p>
                 Présentation du gouvernement du BDE dirigé par
                 Madiampanga Masikita, président du BDE.
             </p>
 
-            <a href="annonce.html?id=presentation-gouvernement-bde" class="news-button">
+            <a
+                href="annonce.html?id=presentation-gouvernement-bde"
+                class="news-button"
+            >
                 Voir l'annonce →
             </a>
-
         </div>
 
+    </div>
+</section>
 
+<!-- NOUVELLES PUBLICATIONS DE SUPABASE -->
+<section id="publications-section">
+
+    <h2 class="title">📢 Publications récentes</h2>
+
+    <p class="subtitle">
+        Les communications et événements publiés depuis l'administration
+        apparaîtront automatiquement dans cette section.
+    </p>
+
+    <div id="publications-dynamiques" class="cards">
+        <p class="loading">Chargement des publications...</p>
     </div>
 
 </section>
 
-
 <section>
-
-    <h2 class="title">
-        Vie scolaire
-    </h2>
+    <h2 class="title">Vie scolaire</h2>
 
     <p class="subtitle">
         Cette rubrique pourra présenter les activités culturelles,
         sportives, scientifiques et éducatives de nos élèves.
     </p>
-
 </section>
 
-
 <footer>
+    <p><strong>Complexe scolaire Cardinal Malula</strong></p>
 
-    <p>
-        <strong>Complexe scolaire Cardinal Malula</strong>
-    </p>
+    <p>Le meilleur est ma destinée.</p>
 
-    <p>
-        Le meilleur est ma destinée.
-    </p>
-
-    <p>
-        © 2026 — Tous droits réservés.
-    </p>
-
+    <p>© 2026 — Tous droits réservés.</p>
 </footer>
 
+<script>
+"use strict";
+
+const SUPABASE_URL =
+    "https://tqukwjzoimhwovelzkxe.supabase.co";
+
+const SUPABASE_PUBLIC_KEY =
+    "sb_publishable_cFolYLhll8ZhhhpHk0Pq6Q_jFsJU41m";
+
+const publicationsZone =
+    document.getElementById("publications-dynamiques");
+
+function ajouterTexte(parent, balise, texte, classe = "") {
+    const element = document.createElement(balise);
+    element.textContent = texte || "";
+
+    if (classe) {
+        element.className = classe;
+    }
+
+    parent.appendChild(element);
+    return element;
+}
+
+function afficherPublication(publication) {
+    const carte = document.createElement("article");
+    carte.className = "card announcement";
+
+    const categorie = String(publication.categorie || "")
+        .toLowerCase();
+
+    const estEvenement =
+        categorie === "evenement" ||
+        categorie === "événement" ||
+        categorie === "evenement scolaire";
+
+    ajouterTexte(
+        carte,
+        "div",
+        estEvenement ? "📅 ÉVÉNEMENT" : "📢 COMMUNICATION OFFICIELLE",
+        "date"
+    );
+
+    ajouterTexte(
+        carte,
+        "h3",
+        publication.titre || "Sans titre"
+    );
+
+    ajouterTexte(
+        carte,
+        "p",
+        publication.description || ""
+    );
+
+    if (publication.date_evenement) {
+        ajouterTexte(
+            carte,
+            "p",
+            "📅 Date : " + publication.date_evenement
+        );
+    }
+
+    if (publication.heure) {
+        ajouterTexte(
+            carte,
+            "p",
+            "🕒 Heure : " + publication.heure
+        );
+    }
+
+    if (publication.lieu) {
+        ajouterTexte(
+            carte,
+            "p",
+            "📍 Lieu : " + publication.lieu
+        );
+    }
+
+    if (publication.organisateur) {
+        ajouterTexte(
+            carte,
+            "p",
+            "Organisateur(s) : " + publication.organisateur
+        );
+    }
+
+    if (publication.affiche_url) {
+        const image = document.createElement("img");
+
+        image.className = "news-poster";
+        image.src = publication.affiche_url;
+        image.alt = "Affiche de " + (publication.titre || "la publication");
+        image.loading = "lazy";
+
+        image.onerror = function () {
+            image.alt = "L'affiche n'a pas pu être chargée.";
+        };
+
+        carte.appendChild(image);
+    }
+
+    return carte;
+}
+
+async function chargerPublications() {
+    publicationsZone.replaceChildren();
+
+    ajouterTexte(
+        publicationsZone,
+        "p",
+        "Chargement des publications...",
+        "loading"
+    );
+
+    try {
+        const url = new URL(
+            SUPABASE_URL + "/rest/v1/annonces"
+        );
+
+        url.searchParams.set(
+            "select",
+            "id,titre,categorie,description,date_evenement,heure,lieu,organisateur,affiche_url,created_at"
+        );
+
+        url.searchParams.set("publie", "eq.true");
+        url.searchParams.set("order", "created_at.desc");
+
+        const reponse = await fetch(url.toString(), {
+            method: "GET",
+            headers: {
+                "apikey": SUPABASE_PUBLIC_KEY,
+                "Authorization": "Bearer " + SUPABASE_PUBLIC_KEY
+            }
+        });
+
+        if (!reponse.ok) {
+            throw new Error(
+                "Erreur HTTP " + reponse.status
+            );
+        }
+
+        const publications = await reponse.json();
+
+        publicationsZone.replaceChildren();
+
+        if (!Array.isArray(publications) || publications.length === 0) {
+            ajouterTexte(
+                publicationsZone,
+                "p",
+                "Aucune nouvelle publication pour le moment.",
+                "empty"
+            );
+
+            return;
+        }
+
+        publications.forEach(function (publication) {
+            publicationsZone.appendChild(
+                afficherPublication(publication)
+            );
+        });
+
+    } catch (erreur) {
+        console.error(
+            "Erreur lors du chargement des publications :",
+            erreur
+        );
+
+        publicationsZone.replaceChildren();
+
+        ajouterTexte(
+            publicationsZone,
+            "p",
+            "Les publications ne peuvent pas être chargées pour le moment. Réessayez plus tard.",
+            "error-message"
+        );
+    }
+}
+
+chargerPublications();
+
+// Actualiser les publications périodiquement.
+setInterval(chargerPublications, 60000);
+</script>
 
 </body>
 </html>
