@@ -1,436 +1,588 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Administration - Cardinal Malula</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administration | Cardinal Malula</title>
 
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f5fa;color:#172033}
-header{background:#102a43;color:white;text-align:center;padding:25px 12px}
-header h1{margin:0 0 8px;font-size:23px}
-main{max-width:750px;width:92%;margin:25px auto}
-.carte{background:white;padding:22px;margin-bottom:20px;border-radius:13px;box-shadow:0 4px 15px #0000000d}
-h2{color:#102a43;margin-top:0}
-input,select,textarea{width:100%;padding:12px;margin:7px 0 15px;border:1px solid #ccd5e0;border-radius:7px;font-size:15px}
-textarea{min-height:120px;resize:vertical}
-label{font-weight:bold;font-size:14px}
-button{background:#2563eb;color:white;padding:12px 17px;border:0;border-radius:7px;cursor:pointer;font-size:15px;margin:4px 4px 4px 0}
-button:hover{background:#1d4ed8}
-button:disabled{opacity:.6;cursor:wait}
-.secondaire{background:#526579}
-.cache{display:none!important}
-.message{line-height:1.5;overflow-wrap:anywhere}
-.lien{display:inline-block;margin:12px 0;color:#2563eb;text-decoration:underline;cursor:pointer}
-footer{text-align:center;padding:20px;color:#526579;font-size:13px}
-</style>
+  <style>
+    :root {
+      --bleu: #102a43;
+      --bleu-clair: #2563eb;
+      --fond: #f2f5fa;
+      --blanc: #ffffff;
+      --texte: #172033;
+      --vert: #16803c;
+      --rouge: #c62828;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--fond);
+      color: var(--texte);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--bleu), var(--bleu-clair));
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+    }
+
+    header p {
+      margin: 0;
+    }
+
+    main {
+      max-width: 850px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: var(--blanc);
+      padding: 22px;
+      border-radius: 14px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 16px #102a4310;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--bleu);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+      background: white;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .primary {
+      background: var(--bleu-clair);
+      color: white;
+    }
+
+    .secondary {
+      background: #e2e8f0;
+      color: var(--bleu);
+    }
+
+    .danger {
+      background: var(--rouge);
+      color: white;
+    }
+
+    .success {
+      background: #dcfce7;
+      color: #166534;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .error {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .announcement {
+      border: 1px solid #dbe3ef;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 14px;
+    }
+
+    .announcement h3 {
+      margin-top: 0;
+    }
+
+    .announcement p {
+      overflow-wrap: anywhere;
+    }
+
+    .hint {
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #64748b;
+    }
+  </style>
 </head>
 
 <body>
+
 <header>
-  <h1>Complexe scolaire Cardinal Malula</h1>
-  <p>Espace d'administration</p>
+  <h1>Administration</h1>
+  <p>Complexe scolaire Cardinal Malula</p>
 </header>
 
 <main>
-<section class="carte" id="connexion">
-  <h2>Connexion administrateur</h2>
-  <p>Connecte-toi avec ton compte administrateur.</p>
 
-  <form id="formConnexion">
-    <label for="email">Adresse e-mail</label>
-    <input id="email" type="email" autocomplete="username" required placeholder="Ton adresse e-mail">
+  <section class="card" id="loginCard">
+    <h2>🔐 Accès administrateur</h2>
+    <p class="hint">
+      Entre ton code administrateur pour gérer les publications du site.
+    </p>
 
-    <label for="motdepasse">Mot de passe</label>
-    <input id="motdepasse" type="password" autocomplete="current-password" required placeholder="Ton mot de passe">
+    <form id="loginForm">
+      <label for="adminCode">Code administrateur</label>
+      <input
+        id="adminCode"
+        type="password"
+        autocomplete="current-password"
+        required
+      >
 
-    <button type="submit">Se connecter</button>
-  </form>
+      <button class="primary" type="submit">
+        Accéder à l’administration
+      </button>
+    </form>
 
-  <button type="button" id="ouvrirRecuperation" class="secondaire">
-    Mot de passe oublié ?
-  </button>
-  <p id="message" class="message" aria-live="polite"></p>
-</section>
+    <div id="loginMessage" aria-live="polite"></div>
+  </section>
 
-<section class="carte cache" id="recuperation">
-  <h2>Réinitialiser le mot de passe</h2>
-  <p>Entre ton adresse e-mail pour recevoir un lien de réinitialisation.</p>
+  <section class="hidden" id="adminPanel">
 
-  <form id="formRecuperation">
-    <label for="emailRecuperation">Adresse e-mail</label>
-    <input id="emailRecuperation" type="email" required placeholder="Ton adresse e-mail">
-    <button type="submit" id="boutonEnvoiLien">Envoyer le lien</button>
-    <button type="button" class="secondaire" id="retourConnexion">Retour</button>
-  </form>
+    <div class="card">
+      <h2>📝 Nouvelle publication</h2>
 
-  <p id="messageRecuperation" class="message" aria-live="polite"></p>
-</section>
+      <form id="publishForm">
 
-<section class="carte cache" id="nouveauMotDePasse">
-  <h2>Choisir un nouveau mot de passe</h2>
+        <label for="categorie">Type de publication</label>
+        <select id="categorie" required>
+          <option value="communication">
+            Communication officielle
+          </option>
+          <option value="evenement">
+            Annonce d’un événement
+          </option>
+        </select>
 
-  <form id="formNouveauMotDePasse">
-    <label for="nouveauMotDePasseChamp">Nouveau mot de passe</label>
-    <input id="nouveauMotDePasseChamp" type="password" minlength="8" autocomplete="new-password" required placeholder="8 caractères minimum">
+        <label for="titre">Titre</label>
+        <input
+          id="titre"
+          type="text"
+          maxlength="180"
+          required
+        >
 
-    <label for="confirmationMotDePasse">Confirmer le mot de passe</label>
-    <input id="confirmationMotDePasse" type="password" minlength="8" autocomplete="new-password" required placeholder="Retape le mot de passe">
+        <label for="description">Message ou description</label>
+        <textarea
+          id="description"
+          maxlength="12000"
+          required
+        ></textarea>
 
-    <button type="submit">Enregistrer le nouveau mot de passe</button>
-  </form>
+        <div id="eventFields" class="hidden">
 
-  <p id="messageNouveauMotDePasse" class="message" aria-live="polite"></p>
-</section>
+          <label for="dateEvenement">Date de l’événement</label>
+          <input id="dateEvenement" type="date">
 
-<section class="carte cache" id="publication">
-  <h2>Publier une actualité</h2>
-  <p id="bienvenue"></p>
+          <label for="heure">Heure</label>
+          <input id="heure" type="time">
 
-  <form id="formAnnonce">
-    <label for="titre">Titre de l'annonce</label>
-    <input id="titre" required maxlength="180" placeholder="Ex. : Sortie du Club de Science">
+          <label for="lieu">Lieu</label>
+          <input id="lieu" type="text" maxlength="250">
 
-    <label for="categorie">Catégorie</label>
-    <select id="categorie" required>
-      <option value="">Choisir une catégorie</option>
-      <option value="Actualité scolaire">Actualité scolaire</option>
-      <option value="Club de Science">Club de Science</option>
-      <option value="BDE">BDE</option>
-      <option value="Événement">Événement</option>
-      <option value="Annonce importante">Annonce importante</option>
-    </select>
+          <label for="organisateurs">Organisateur(s)</label>
+          <input id="organisateurs" type="text" maxlength="250">
 
-    <label for="description">Description</label>
-    <textarea id="description" required placeholder="Écris les informations de l'annonce..."></textarea>
+        </div>
 
-    <label for="dateEvenement">Date de l'événement</label>
-    <input id="dateEvenement" type="date">
+        <label for="affiche">Affiche ou image (facultatif)</label>
+        <input
+          id="affiche"
+          type="file"
+          accept="image/jpeg,image/png,image/webp,image/gif"
+        >
 
-    <label for="heure">Heure</label>
-    <input id="heure" type="text" placeholder="Ex. : 7h10 - 7h30">
+        <p class="hint">
+          Image de 5 Mo maximum. Vérifie que tu as le droit de la publier.
+        </p>
 
-    <label for="lieu">Lieu</label>
-    <input id="lieu" type="text" placeholder="Lieu de l'événement">
+        <button class="primary" type="submit" id="publishButton">
+          Publier
+        </button>
 
-    <label for="organisateur">Organisateur</label>
-    <input id="organisateur" type="text" placeholder="Ex. : Club de Science">
+        <button class="secondary" type="reset">
+          Effacer le formulaire
+        </button>
+      </form>
 
-    <button type="submit">Publier l'annonce</button>
-  </form>
+      <div id="publishMessage" aria-live="polite"></div>
+    </div>
 
-  <p id="messagePublication" class="message" aria-live="polite"></p>
+    <div class="card">
+      <h2>📋 Publications existantes</h2>
 
-  <hr style="border:0;border-top:1px solid #ddd;margin:25px 0">
+      <button class="secondary" id="refreshButton" type="button">
+        Actualiser la liste
+      </button>
 
-  <h2>Mes annonces</h2>
-  <div id="listeAnnonces">Chargement des annonces...</div>
+      <div id="announcementList" aria-live="polite"></div>
+    </div>
 
-  <button type="button" class="secondaire" id="deconnexion">Se déconnecter</button>
-</section>
+    <button class="danger" id="logoutButton" type="button">
+      Fermer la session
+    </button>
+
+  </section>
+
 </main>
 
-<footer>Le meilleur est ma destinée.</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<footer>
+  Complexe scolaire Cardinal Malula — Administration
+</footer>
 
 <script>
-"use strict";
+  "use strict";
 
-const SUPABASE_URL = "https://tqukwjzoimhwovelzkxe.supabase.co";
-const SUPABASE_KEY = "sb_publishable_cFolYLhll8ZhhhpHk0Pq6Q_jFsJU41m";
+  // Adresse publique de la fonction Supabase.
+  const FUNCTION_URL =
+    "https://tqukwjzoimhwovelzkxe.supabase.co/functions/v1/gerer-annonces";
 
-const connexion = document.getElementById("connexion");
-const recuperation = document.getElementById("recuperation");
-const nouveauMotDePasse = document.getElementById("nouveauMotDePasse");
-const publication = document.getElementById("publication");
+  // Clé publique Supabase : elle n'est pas le code administrateur.
+  const SUPABASE_PUBLIC_KEY =
+    "sb_publishable_cFolYLhll8ZhhhpHk0Pq6Q_jFsJU41m";
 
-function afficherSection(section) {
-  [connexion, recuperation, nouveauMotDePasse, publication].forEach(el => {
-    el.classList.add("cache");
-  });
-  section.classList.remove("cache");
-}
+  let adminSecret = "";
+  let publications = [];
 
-function message(id, texte) {
-  document.getElementById(id).textContent = texte;
-}
+  const $ = (id) => document.getElementById(id);
 
-/* Le bouton fonctionne indépendamment de la connexion à Supabase. */
-document.getElementById("ouvrirRecuperation").addEventListener("click", function () {
-  document.getElementById("emailRecuperation").value =
-    document.getElementById("email").value.trim();
+  function showMessage(element, message, success = false) {
+    element.replaceChildren();
 
-  message("messageRecuperation", "");
-  afficherSection(recuperation);
-});
+    const paragraph = document.createElement("p");
+    paragraph.className = success ? "success" : "error";
+    paragraph.textContent = message;
 
-document.getElementById("retourConnexion").addEventListener("click", function () {
-  message("messageRecuperation", "");
-  afficherSection(connexion);
-});
-
-/* Vérification de la bibliothèque Supabase. */
-if (!window.supabase || !window.supabase.createClient) {
-  message("message", "La bibliothèque de connexion ne s'est pas chargée. Vérifie ta connexion Internet et recharge la page.");
-  throw new Error("La bibliothèque Supabase est indisponible.");
-}
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY,
-  {
-    auth: {
-      flowType: "implicit",
-      detectSessionInUrl: true,
-      persistSession: true,
-      autoRefreshToken: true
-    }
-  }
-);
-
-async function verifierAdministrateur(session) {
-  if (!session) {
-    afficherSection(connexion);
-    return false;
+    element.appendChild(paragraph);
   }
 
-  const {data, error} = await supabaseClient
-    .from("admins")
-    .select("user_id")
-    .eq("user_id", session.user.id)
-    .maybeSingle();
-
-  if (error || !data) {
-    await supabaseClient.auth.signOut();
-    afficherSection(connexion);
-    message("message", "Ce compte n'est pas autorisé à administrer le site. Vérifie la table admins dans Supabase.");
-    return false;
+  function clearMessage(element) {
+    element.replaceChildren();
   }
 
-  afficherSection(publication);
-  document.getElementById("bienvenue").textContent =
-    "Connecté : " + session.user.email;
+  async function callFunction(payload, file = null) {
+    let body;
+    const headers = {
+      "apikey": SUPABASE_PUBLIC_KEY,
+      "x-admin-secret": adminSecret
+    };
 
-  await chargerAnnonces();
-  return true;
-}
+    if (file) {
+      body = new FormData();
 
-async function chargerAnnonces() {
-  const liste = document.getElementById("listeAnnonces");
-  liste.textContent = "Chargement...";
-
-  const {data, error} = await supabaseClient
-    .from("annonces")
-    .select("id,titre,categorie,publie,created_at")
-    .order("created_at", {ascending:false});
-
-  if (error) {
-    liste.textContent = "Erreur de chargement : " + error.message;
-    return;
-  }
-
-  liste.replaceChildren();
-
-  if (!data || data.length === 0) {
-    liste.textContent = "Aucune annonce enregistrée.";
-    return;
-  }
-
-  data.forEach(annonce => {
-    const carte = document.createElement("div");
-    carte.style.cssText = "padding:13px 0;border-bottom:1px solid #ddd";
-
-    const titre = document.createElement("strong");
-    titre.textContent = annonce.titre;
-
-    const details = document.createElement("p");
-    details.textContent = annonce.categorie + " — " +
-      (annonce.publie ? "Publiée" : "Brouillon");
-
-    const bouton = document.createElement("button");
-    bouton.className = annonce.publie ? "secondaire" : "";
-    bouton.textContent = annonce.publie ? "Retirer du site" : "Publier sur le site";
-
-    bouton.addEventListener("click", async () => {
-      bouton.disabled = true;
-
-      const {error} = await supabaseClient
-        .from("annonces")
-        .update({publie: !annonce.publie})
-        .eq("id", annonce.id);
-
-      bouton.disabled = false;
-
-      if (error) {
-        alert("Erreur : " + error.message);
-      } else {
-        await chargerAnnonces();
+      for (const [key, value] of Object.entries(payload)) {
+        if (value !== null && value !== undefined) {
+          body.append(key, String(value));
+        }
       }
-    });
 
-    carte.append(titre, details, bouton);
-    liste.appendChild(carte);
-  });
-}
-
-document.getElementById("formConnexion").addEventListener("submit", async e => {
-  e.preventDefault();
-  message("message", "Connexion en cours...");
-
-  const {data, error} = await supabaseClient.auth.signInWithPassword({
-    email: document.getElementById("email").value.trim(),
-    password: document.getElementById("motdepasse").value
-  });
-
-  if (error) {
-    message("message", "Connexion impossible. Vérifie ton adresse e-mail et ton mot de passe.");
-    return;
-  }
-
-  await verifierAdministrateur(data.session);
-});
-
-document.getElementById("formRecuperation").addEventListener("submit", async e => {
-  e.preventDefault();
-
-  const bouton = document.getElementById("boutonEnvoiLien");
-  const email = document.getElementById("emailRecuperation").value.trim();
-
-  bouton.disabled = true;
-  message("messageRecuperation", "Envoi du lien en cours...");
-
-  try {
-    const redirectTo =
-      "https://zolagrace623-eng.github.io/cardinal-malula-site/administration.html";
-
-    const {error} = await supabaseClient.auth.resetPasswordForEmail(email, {
-      redirectTo: redirectTo
-    });
-
-    if (error) {
-      message("messageRecuperation", "Erreur : " + error.message);
+      body.append("affiche", file);
     } else {
-      message("messageRecuperation", "Demande envoyée. Vérifie ta boîte de réception et tes courriers indésirables.");
+      headers["Content-Type"] = "application/json";
+      body = JSON.stringify(payload);
     }
-  } catch (error) {
-    message("messageRecuperation", "Impossible d'envoyer la demande. Vérifie ta connexion Internet puis réessaie.");
-  } finally {
-    bouton.disabled = false;
-  }
-});
 
-document.getElementById("formNouveauMotDePasse").addEventListener("submit", async e => {
-  e.preventDefault();
-
-  const motDePasse = document.getElementById("nouveauMotDePasseChamp").value;
-  const confirmation = document.getElementById("confirmationMotDePasse").value;
-
-  if (motDePasse.length < 8) {
-    message("messageNouveauMotDePasse", "Choisis un mot de passe d'au moins 8 caractères.");
-    return;
-  }
-
-  if (motDePasse !== confirmation) {
-    message("messageNouveauMotDePasse", "Les deux mots de passe ne correspondent pas.");
-    return;
-  }
-
-  message("messageNouveauMotDePasse", "Modification en cours...");
-
-  try {
-    const {error} = await supabaseClient.auth.updateUser({
-      password: motDePasse
+    const response = await fetch(FUNCTION_URL, {
+      method: "POST",
+      headers,
+      body
     });
 
-    if (error) {
-      message("messageNouveauMotDePasse", "Échec de la modification : " + error.message + ". Demande un nouveau lien si nécessaire.");
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error("Code administrateur incorrect ou accès refusé.");
+      }
+
+      throw new Error(
+        result.error || "Une erreur est survenue. Réessaie."
+      );
+    }
+
+    return result;
+  }
+
+  $("loginForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const candidate = $("adminCode").value;
+    const message = $("loginMessage");
+
+    clearMessage(message);
+
+    if (!candidate) {
+      showMessage(message, "Entre ton code administrateur.");
       return;
     }
 
-    message("messageNouveauMotDePasse", "Mot de passe modifié ! Tu peux maintenant te connecter.");
+    adminSecret = candidate;
 
-    await supabaseClient.auth.signOut();
-    history.replaceState(null, "", window.location.pathname);
-    afficherSection(connexion);
-  } catch (error) {
-    message("messageNouveauMotDePasse", "Une erreur est survenue. Demande un nouveau lien et réessaie.");
-  }
-});
+    try {
+      const result = await callFunction({ action: "list" });
 
-document.getElementById("formAnnonce").addEventListener("submit", async e => {
-  e.preventDefault();
-  message("messagePublication", "Publication en cours...");
+      if (!result.success) {
+        throw new Error("Impossible de vérifier l’accès.");
+      }
 
-  const {data: sessionData} = await supabaseClient.auth.getSession();
-  const session = sessionData.session;
+      $("loginCard").classList.add("hidden");
+      $("adminPanel").classList.remove("hidden");
 
-  if (!session) {
-    message("messagePublication", "Reconnecte-toi pour publier.");
-    afficherSection(connexion);
-    return;
-  }
+      $("adminCode").value = "";
+      await loadAnnouncements();
 
-  const annonce = {
-    titre: document.getElementById("titre").value.trim(),
-    categorie: document.getElementById("categorie").value,
-    description: document.getElementById("description").value.trim(),
-    date_evenement: document.getElementById("dateEvenement").value || null,
-    heure: document.getElementById("heure").value.trim() || null,
-    lieu: document.getElementById("lieu").value.trim() || null,
-    organisateur: document.getElementById("organisateur").value.trim() || null,
-    publie: true
-  };
+    } catch (error) {
+      adminSecret = "";
+      $("adminCode").value = "";
 
-  const {error} = await supabaseClient.from("annonces").insert(annonce);
+      showMessage(
+        message,
+        error.message || "Connexion impossible."
+      );
+    }
+  });
 
-  if (error) {
-    message("messagePublication", "Publication impossible : " + error.message);
-    return;
+  function updateEventFields() {
+    const isEvent = $("categorie").value === "evenement";
+
+    $("eventFields").classList.toggle("hidden", !isEvent);
+
+    $("dateEvenement").required = false;
   }
 
-  message("messagePublication", "Annonce enregistrée dans Supabase !");
-  document.getElementById("formAnnonce").reset();
-  await chargerAnnonces();
-});
+  $("categorie").addEventListener("change", updateEventFields);
 
-document.getElementById("deconnexion").addEventListener("click", async () => {
-  await supabaseClient.auth.signOut();
-  afficherSection(connexion);
-  message("message", "Tu es déconnecté.");
-});
+  $("publishForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-async function demarrer() {
-  const hash = window.location.hash;
+    const message = $("publishMessage");
+    const button = $("publishButton");
+    const file = $("affiche").files[0] || null;
 
-  if (hash.includes("error_description")) {
-    message("messageNouveauMotDePasse", "Le lien a expiré ou n'est pas valide. Demande un nouveau lien.");
-    afficherSection(nouveauMotDePasse);
-    return;
+    clearMessage(message);
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      showMessage(message, "L’image dépasse la limite de 5 Mo.");
+      return;
+    }
+
+    const payload = {
+      action: "publish",
+      categorie: $("categorie").value,
+      titre: $("titre").value.trim(),
+      description: $("description").value.trim(),
+      date_evenement: $("dateEvenement").value || null,
+      heure: $("heure").value || null,
+      lieu: $("lieu").value.trim() || null,
+      organisateurs: $("organisateurs").value.trim() || null
+    };
+
+    button.disabled = true;
+    button.textContent = "Publication en cours…";
+
+    try {
+      const result = await callFunction(payload, file);
+
+      showMessage(
+        message,
+        result.message || "Publication enregistrée.",
+        true
+      );
+
+      $("publishForm").reset();
+      updateEventFields();
+
+      await loadAnnouncements();
+
+    } catch (error) {
+      showMessage(
+        message,
+        error.message || "La publication a échoué."
+      );
+    } finally {
+      button.disabled = false;
+      button.textContent = "Publier";
+    }
+  });
+
+  async function loadAnnouncements() {
+    const container = $("announcementList");
+
+    container.textContent = "Chargement…";
+
+    try {
+      const result = await callFunction({ action: "list" });
+
+      publications = result.annonces || [];
+      renderAnnouncements();
+
+    } catch (error) {
+      container.textContent =
+        error.message || "Impossible de charger les publications.";
+    }
   }
 
-  if (hash.includes("type=recovery") || hash.includes("access_token=")) {
-    afficherSection(nouveauMotDePasse);
-    return;
+  function renderAnnouncements() {
+    const container = $("announcementList");
+    container.replaceChildren();
+
+    if (!publications.length) {
+      container.textContent = "Aucune publication pour le moment.";
+      return;
+    }
+
+    for (const item of publications) {
+      const article = document.createElement("article");
+      article.className = "announcement";
+
+      const title = document.createElement("h3");
+      title.textContent = item.titre || "Sans titre";
+      article.appendChild(title);
+
+      const category = document.createElement("p");
+      category.textContent =
+        item.categorie === "evenement"
+          ? "📅 Événement"
+          : "📢 Communication officielle";
+      article.appendChild(category);
+
+      const description = document.createElement("p");
+      description.textContent = item.description || "";
+      article.appendChild(description);
+
+      if (item.date_evenement) {
+        const date = document.createElement("p");
+        date.textContent = "Date : " + item.date_evenement;
+        article.appendChild(date);
+      }
+
+      if (item.heure) {
+        const time = document.createElement("p");
+        time.textContent = "Heure : " + item.heure;
+        article.appendChild(time);
+      }
+
+      if (item.lieu) {
+        const place = document.createElement("p");
+        place.textContent = "Lieu : " + item.lieu;
+        article.appendChild(place);
+      }
+
+      const status = document.createElement("p");
+      status.textContent = item.publie
+        ? "Statut : publiée"
+        : "Statut : non publiée";
+      article.appendChild(status);
+
+      if (item.affiche_url) {
+        const link = document.createElement("a");
+        link.href = item.affiche_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Voir l’affiche";
+        article.appendChild(link);
+      }
+
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "danger";
+      deleteButton.textContent = "Supprimer";
+
+      deleteButton.addEventListener("click", async () => {
+        if (!confirm("Veux-tu vraiment supprimer cette publication ?")) {
+          return;
+        }
+
+        deleteButton.disabled = true;
+
+        try {
+          await callFunction({
+            action: "delete",
+            id: item.id
+          });
+
+          await loadAnnouncements();
+
+        } catch (error) {
+          alert(error.message || "Suppression impossible.");
+          deleteButton.disabled = false;
+        }
+      });
+
+      article.appendChild(deleteButton);
+      container.appendChild(article);
+    }
   }
 
-  const {data, error} = await supabaseClient.auth.getSession();
+  $("refreshButton").addEventListener("click", loadAnnouncements);
 
-  if (error) {
-    message("message", "Impossible de vérifier la session. Recharge la page.");
-    afficherSection(connexion);
-    return;
-  }
+  $("logoutButton").addEventListener("click", () => {
+    adminSecret = "";
+    publications = [];
 
-  if (data.session) {
-    await verifierAdministrateur(data.session);
-  } else {
-    afficherSection(connexion);
-  }
-}
+    $("adminPanel").classList.add("hidden");
+    $("loginCard").classList.remove("hidden");
+    $("adminCode").value = "";
 
-demarrer();
+    clearMessage($("loginMessage"));
+    clearMessage($("publishMessage"));
+    $("announcementList").replaceChildren();
+  });
+
+  $("publishForm").addEventListener("reset", () => {
+    setTimeout(updateEventFields, 0);
+  });
+
+  updateEventFields();
 </script>
+
 </body>
 </html>
