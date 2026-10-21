@@ -1,428 +1,716 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complexe scolaire Cardinal Malula</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+  <title>Complexe scolaire Cardinal Malula</title>
+
+  <meta name="description"
+        content="Bienvenue au Complexe scolaire Cardinal Malula à Kinshasa-Limete. Le meilleur est ma destinée.">
+
+  <style>
+    :root {
+      --violet: #54247a;
+      --violet-dark: #29133e;
+      --violet-light: #eee5f7;
+      --gold: #d5ad60;
+      --white: #ffffff;
+      --text: #282334;
+    }
+
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     html {
-        scroll-behavior: smooth;
+      scroll-behavior: smooth;
     }
 
     body {
-        font-family: Arial, sans-serif;
-        background: #f5f7fb;
-        color: #172033;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #faf8fc;
+      color: var(--text);
+      line-height: 1.6;
     }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* EN-TÊTE */
 
     header {
-        background: #102a43;
-        color: white;
-        padding: 18px 7%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
+      background: var(--white);
+      padding: 16px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 3px 18px rgba(41, 19, 62, 0.08);
+      position: relative;
+      z-index: 10;
     }
 
-    .logo {
-        font-size: 21px;
-        font-weight: bold;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-symbol {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--violet);
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .brand h2 {
+      font-size: 16px;
+      line-height: 1.3;
+      color: var(--violet-dark);
+    }
+
+    .brand p {
+      font-size: 11px;
+      color: #92713c;
+      letter-spacing: 1px;
     }
 
     nav {
-        display: flex;
-        gap: 20px;
+      display: flex;
+      align-items: center;
+      gap: 23px;
     }
 
     nav a {
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-        transition: 0.3s;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
-        color: #93c5fd;
+      color: var(--violet);
     }
 
+    .nav-button {
+      background: var(--violet);
+      color: white !important;
+      padding: 11px 17px;
+      border-radius: 7px;
+    }
+
+    /* ACCUEIL */
+
     .hero {
-        min-height: 560px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 40px 20px;
-        background: linear-gradient(135deg, #102a43, #2563eb);
-        color: white;
+      min-height: 580px;
+      padding: 80px 8%;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(31, 15, 47, 0.96) 0%,
+          rgba(56, 27, 79, 0.87) 48%,
+          rgba(56, 27, 79, 0.20) 100%
+        ),
+        url("images.jfif") center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-        font-size: 48px;
-        max-width: 850px;
-        margin-bottom: 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.12;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
     }
 
     .hero p {
-        font-size: 21px;
-        margin-bottom: 30px;
+      max-width: 530px;
+      font-size: 16px;
+      color: #eee7f4;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
     }
 
     .button {
-        display: inline-block;
-        padding: 14px 25px;
-        background: white;
-        color: #102a43;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.3s;
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
-    .button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    .button-gold {
+      background: var(--gold);
+      color: var(--violet-dark);
     }
 
-    section {
-        padding: 70px 8%;
+    .button-gold:hover {
+      background: white;
+      transform: translateY(-3px);
     }
 
-    .title {
-        text-align: center;
-        font-size: 32px;
-        margin-bottom: 15px;
+    .button-outline {
+      border: 1px solid white;
+      color: white;
     }
 
-    .subtitle {
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto 40px;
-        color: #667085;
-        line-height: 1.7;
+    .button-outline:hover {
+      background: white;
+      color: var(--violet);
     }
 
-    .about {
-        background: white;
-        text-align: center;
+    /* DEVISE */
+
+    .motto {
+      background: var(--violet);
+      color: white;
+      padding: 25px 7%;
+      text-align: center;
     }
 
-    .about p {
-        max-width: 850px;
-        margin: auto;
-        line-height: 1.8;
-        color: #667085;
-        font-size: 17px;
+    .motto p {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
+      font-style: italic;
     }
+
+    .motto span {
+      color: var(--gold);
+    }
+
+    /* SECTIONS */
+
+    section.content-section {
+      padding: 75px 8%;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+    }
+
+    .section-heading span {
+      color: #98713c;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      color: var(--violet-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(29px, 4vw, 40px);
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: #706879;
+      font-size: 15px;
+    }
+
+    /* PRÉSENTATION */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 14px 14px 0 var(--violet-light);
+    }
+
+    .about-text h3 {
+      color: var(--violet-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    .about-text p {
+      color: #686170;
+      margin-bottom: 17px;
+    }
+
+    .about-text .button {
+      margin-top: 8px;
+    }
+
+    /* VALEURS */
 
     .values {
-        margin-top: 45px;
+      background: var(--violet-light);
     }
 
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 22px;
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1150px;
+      margin: auto;
     }
 
-    .card {
-        background: white;
-        padding: 28px;
-        border-radius: 15px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.07);
-        transition: 0.3s;
+    .value-card {
+      background: white;
+      padding: 30px 24px;
+      border-radius: 10px;
+      border-bottom: 4px solid var(--gold);
+      box-shadow: 0 5px 22px rgba(41, 19, 62, 0.05);
     }
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    .value-card .icon {
+      font-size: 30px;
+      margin-bottom: 13px;
     }
 
-    .card h3 {
-        margin-bottom: 12px;
-        color: #102a43;
+    .value-card h3 {
+      color: var(--violet);
+      margin-bottom: 10px;
     }
 
-    .card p {
-        line-height: 1.6;
-        color: #667085;
+    .value-card p {
+      font-size: 14px;
+      color: #706879;
     }
 
-    .vision {
-        background: #102a43;
-        color: white;
-        text-align: center;
+    /* VIE SCOLAIRE */
+
+    .school-life-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1050px;
+      margin: auto;
     }
 
-    .vision .title {
-        color: white;
+    .school-life-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(41, 19, 62, 0.09);
     }
 
-    .vision p {
-        max-width: 800px;
-        margin: auto;
-        line-height: 1.8;
-        color: #dbeafe;
+    .school-life-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
     }
 
-    .contact {
-        background: #eef4ff;
-        text-align: center;
+    .school-life-card div {
+      padding: 24px;
     }
+
+    .school-life-card h3 {
+      color: var(--violet);
+      margin-bottom: 8px;
+    }
+
+    .school-life-card p {
+      color: #706879;
+      font-size: 14px;
+    }
+
+    /* APPEL À L'ACTION */
+
+    .cta {
+      background:
+        linear-gradient(120deg, var(--violet-dark), var(--violet));
+      color: white;
+      padding: 65px 8%;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: #e8dff0;
+      max-width: 650px;
+      margin: 0 auto 25px;
+    }
+
+    /* PIED DE PAGE */
 
     footer {
-        background: #102a43;
-        color: white;
-        text-align: center;
-        padding: 30px 20px;
+      background: #1d1029;
+      color: #ddd3e6;
+      padding: 35px 8%;
+      text-align: center;
+    }
+
+    footer h3 {
+      color: white;
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 8px;
+    }
+
+    footer .footer-motto {
+      color: var(--gold);
+      font-style: italic;
+      margin: 8px 0;
     }
 
     footer p {
-        margin: 7px;
+      font-size: 13px;
     }
 
-    @media (max-width: 700px) {
-        header {
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        nav {
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .hero {
-            min-height: 500px;
-        }
-
-        .hero h1 {
-            font-size: 34px;
-        }
-
-        .hero p {
-            font-size: 18px;
-        }
-
-        section {
-            padding: 50px 6%;
-        }
-
-        .title {
-            font-size: 27px;
-        }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px 0;
     }
-</style>
 
+    .footer-links a {
+      color: white;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* TÉLÉPHONES ET TABLETTES */
+
+    @media (max-width: 850px) {
+      header {
+        flex-direction: column;
+        padding: 18px 5%;
+      }
+
+      nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 500px;
+        padding: 65px 7%;
+        background-position: center;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .school-life-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section.content-section {
+        padding: 55px 7%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand h2 {
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 470px;
+        padding: 50px 6%;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .button {
+        padding: 12px 15px;
+        font-size: 13px;
+      }
+
+      .motto p {
+        font-size: 19px;
+      }
+
+      .about-image img {
+        height: 250px;
+      }
+
+      .school-life-card img {
+        height: 220px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-    <div class="logo">
-        CARDINAL MALULA
-    </div>
+  <header>
+    <a href="index.html" class="brand">
+      <div class="brand-symbol">CM</div>
+      <div>
+        <h2>COMPLEXE SCOLAIRE<br>CARDINAL MALULA</h2>
+        <p>KINSHASA · LIMETE</p>
+      </div>
+    </a>
 
     <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="ecole.html">Notre école</a>
-        <a href="formations.html">Formations</a>
-        <a href="actualites.html">Actualités</a>
-        <a href="contact.html">Contact</a>
+      <a href="index.html">Accueil</a>
+      <a href="#apropos">Notre école</a>
+      <a href="#valeurs">Nos valeurs</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="actualites.html" class="nav-button">Découvrir</a>
     </nav>
-</header>
+  </header>
 
-<section class="hero" id="accueil">
-    <div>
+  <main>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">Savoir · Excellence · Avenir</span>
+
         <h1>
-            Complexe scolaire Cardinal Malula
+          Bâtir aujourd'hui<br>
+          les talents de <span>demain.</span>
         </h1>
 
         <p>
-            Le meilleur est ma destinée.
+          Bienvenue au Complexe scolaire Cardinal Malula,
+          un cadre d'apprentissage où le savoir, la discipline
+          et l'ambition ouvrent la voie vers un avenir meilleur.
         </p>
 
-        <a href="ecole.html" class="button">
-            Découvrir notre école
-        </a>
+        <div class="buttons">
+          <a href="#apropos" class="button button-gold">
+            Découvrir notre école →
+          </a>
+
+          <a href="actualites.html" class="button button-outline">
+            Nos actualités
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="motto">
+      <p>« Le meilleur est <span>ma destinée.</span> »</p>
     </div>
-</section>
 
-<section class="about" id="ecole">
-    <h2 class="title">
-        Bienvenue au Complexe scolaire Cardinal Malula
-    </h2>
+    <section class="content-section" id="apropos">
+      <div class="section-heading">
+        <span>Qui sommes-nous ?</span>
+        <h2>Un établissement, une vision, un avenir</h2>
+        <p>
+          Découvrir une école, c'est découvrir une communauté
+          qui prépare les générations futures.
+        </p>
+      </div>
 
-    <p>
-        Le Complexe scolaire Cardinal Malula est un établissement
-        d'enseignement situé à Kinshasa, en République démocratique du Congo.
-        Notre mission est d'accompagner chaque élève dans son parcours
-        scolaire, en favorisant l'apprentissage, la discipline, la
-        responsabilité et le développement personnel.
-    </p>
-
-    <div class="values">
-        <h2 class="title">
-            Nos valeurs
-        </h2>
-
-        <div class="cards">
-            <div class="card">
-                <h3>🎓 Excellence</h3>
-                <p>
-                    Nous encourageons chaque élève à donner le meilleur
-                    de lui-même dans son parcours scolaire.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>🤝 Respect</h3>
-                <p>
-                    Le respect, la tolérance et la bonne collaboration
-                    sont au cœur de notre communauté scolaire.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>📚 Discipline</h3>
-                <p>
-                    Nous favorisons un environnement propice au travail,
-                    à l'organisation et à la réussite.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>🌟 Responsabilité</h3>
-                <p>
-                    Nous préparons les élèves à devenir des personnes
-                    responsables et engagées dans la société.
-                </p>
-            </div>
+      <div class="about-grid">
+        <div class="about-image">
+          <img
+            src="images.jfif"
+            alt="Bâtiment du Complexe scolaire Cardinal Malula">
         </div>
+
+        <div class="about-text">
+          <h3>Le savoir est la clé de toutes les grandes ambitions.</h3>
+
+          <p>
+            Le Complexe scolaire Cardinal Malula accueille les élèves
+            dans un environnement dédié à l'apprentissage,
+            à la formation et au développement de leurs capacités.
+          </p>
+
+          <p>
+            Notre ambition est d'encourager chaque élève à cultiver
+            ses connaissances, son sens des responsabilités,
+            sa créativité et le goût de l'excellence.
+          </p>
+
+          <a href="actualites.html" class="button button-gold">
+            Suivre la vie de l'école →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section values" id="valeurs">
+      <div class="section-heading">
+        <span>Notre engagement</span>
+        <h2>Les valeurs qui nous guident</h2>
+        <p>
+          Des principes essentiels pour apprendre, progresser
+          et construire son avenir.
+        </p>
+      </div>
+
+      <div class="values-grid">
+        <article class="value-card">
+          <div class="icon">📚</div>
+          <h3>Le savoir</h3>
+          <p>
+            Développer les connaissances, la curiosité intellectuelle
+            et le goût de l'apprentissage.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <div class="icon">🏆</div>
+          <h3>L'excellence</h3>
+          <p>
+            Encourager les efforts, la persévérance et la recherche
+            constante de meilleures performances.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <div class="icon">🤝</div>
+          <h3>La responsabilité</h3>
+          <p>
+            Cultiver le respect, la discipline, l'esprit d'équipe
+            et le sens des responsabilités.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="vie-scolaire">
+      <div class="section-heading">
+        <span>Au cœur de notre établissement</span>
+        <h2>Une école vivante et ambitieuse</h2>
+        <p>
+          La vie scolaire, c'est aussi apprendre à collaborer,
+          à créer et à porter des projets.
+        </p>
+      </div>
+
+      <div class="school-life-grid">
+        <article class="school-life-card">
+          <img
+            src="images%20(1).jfif"
+            alt="Activité scolaire au Complexe scolaire Cardinal Malula">
+
+          <div>
+            <h3>La participation des élèves</h3>
+            <p>
+              Des moments d'échange et d'expression qui encouragent
+              les élèves à prendre des initiatives et à développer
+              leur esprit de responsabilité.
+            </p>
+          </div>
+        </article>
+
+        <article class="school-life-card">
+          <img
+            src="images.jfif"
+            alt="Le cadre du Complexe scolaire Cardinal Malula">
+
+          <div>
+            <h3>Un cadre pour progresser</h3>
+            <p>
+              Un établissement où chaque journée représente
+              une nouvelle occasion d'apprendre, de grandir
+              et de préparer son avenir.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Le meilleur est notre destinée.</h2>
+
+      <p>
+        Restez informés des annonces, des événements
+        et des activités du Complexe scolaire Cardinal Malula.
+      </p>
+
+      <a href="actualites.html" class="button button-gold">
+        Découvrir les actualités →
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <h3>Complexe scolaire Cardinal Malula</h3>
+
+    <p>Kinshasa · Limete · République démocratique du Congo</p>
+
+    <p class="footer-motto">« Le meilleur est ma destinée. »</p>
+
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="actualites.html">Actualités</a>
     </div>
-</section>
-
-<section class="vision">
-    <h2 class="title">
-        Notre vision
-    </h2>
 
     <p>
-        Former une jeunesse instruite, responsable et capable de construire
-        son avenir avec confiance, compétence et détermination.
+      © 2026 Complexe scolaire Cardinal Malula.
+      Tous droits réservés.
     </p>
-</section>
-
-<section id="formations">
-    <h2 class="title">
-        Nos niveaux et options
-    </h2>
-
-    <p class="subtitle">
-        Découvrez les différents parcours proposés par notre établissement.
-    </p>
-
-    <div class="cards">
-        <div class="card">
-            <h3>📚 Éducation de base</h3>
-            <p>
-                7ème et 8ème années de l'éducation de base.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>🔬 Section scientifique</h3>
-            <p>
-                1ère, 2ème, 3ème et 4ème scientifique.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>📖 Section littéraire</h3>
-            <p>
-                1ère, 2ème, 3ème et 4ème littéraire.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>💼 Section commerciale</h3>
-            <p>
-                1ère, 2ème, 3ème et 4ème commerciale.
-            </p>
-        </div>
-    </div>
-</section>
-
-<section id="actualites">
-    <h2 class="title">
-        Actualités de l'école
-    </h2>
-
-    <p class="subtitle">
-        Retrouvez ici les informations et événements importants
-        du Complexe scolaire Cardinal Malula.
-    </p>
-
-    <div class="cards">
-        <div class="card">
-            <h3>📰 Nouvelles</h3>
-            <p>
-                Les dernières nouvelles de notre établissement
-                seront publiées ici.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>📢 Annonces</h3>
-            <p>
-                Retrouvez les annonces importantes destinées
-                aux élèves et aux parents.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>🎓 Vie scolaire</h3>
-            <p>
-                Découvrez les activités, projets et événements
-                de notre communauté scolaire.
-            </p>
-        </div>
-    </div>
-</section>
-
-<section class="contact" id="contact">
-    <h2 class="title">
-        Contactez-nous
-    </h2>
-
-    <p class="subtitle">
-        Complexe scolaire Cardinal Malula — Kinshasa, RDC
-    </p>
-</section>
-
-<footer>
-    <p>
-        <strong>Complexe scolaire Cardinal Malula</strong>
-    </p>
-
-    <p>
-        Le meilleur est ma destinée.
-    </p>
-
-    <p>
-        © 2026 — Tous droits réservés.
-    </p>
-</footer>
+  </footer>
 
 </body>
-</html>
-
+</html>1
