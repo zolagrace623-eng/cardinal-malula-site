@@ -6,8 +6,7 @@
 
   <title>Complexe scolaire Cardinal Malula</title>
 
-  <meta name="description"
-        content="Bienvenue au Complexe scolaire Cardinal Malula à Kinshasa-Limete. Le meilleur est ma destinée.">
+  <meta name="description" content="Bienvenue au Complexe scolaire Cardinal Malula à Kinshasa-Limete. Le meilleur est ma destinée.">
 
   <style>
     :root {
@@ -71,6 +70,7 @@
       color: var(--violet);
       font-size: 19px;
       font-weight: bold;
+      flex-shrink: 0;
     }
 
     .brand h2 {
@@ -88,14 +88,15 @@
     nav {
       display: flex;
       align-items: center;
-      gap: 23px;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: var(--text);
       font-size: 13px;
       font-weight: bold;
-      transition: 0.3s;
+      transition: color 0.3s;
     }
 
     nav a:hover {
@@ -109,26 +110,103 @@
       border-radius: 7px;
     }
 
-    /* ACCUEIL */
+    /* ACCUEIL ET DIAPORAMA */
 
     .hero {
       min-height: 580px;
       padding: 80px 8%;
       display: flex;
       align-items: center;
-      background:
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      color: white;
+      background: var(--violet-dark);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+    }
+
+    .hero::before {
+      background-image:
         linear-gradient(
           90deg,
           rgba(31, 15, 47, 0.96) 0%,
-          rgba(56, 27, 79, 0.87) 48%,
-          rgba(56, 27, 79, 0.20) 100%
+          rgba(56, 27, 79, 0.82) 52%,
+          rgba(56, 27, 79, 0.35) 100%
         ),
-        url("images.jfif") center/cover no-repeat;
-      color: white;
+        url("images.jfif");
+
+      animation: photo1 14s infinite;
+    }
+
+    .hero::after {
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(31, 15, 47, 0.96) 0%,
+          rgba(56, 27, 79, 0.82) 52%,
+          rgba(56, 27, 79, 0.35) 100%
+        ),
+        url("images%20(1).jfif");
+
+      opacity: 0;
+      animation: photo2 14s infinite;
+    }
+
+    @keyframes photo1 {
+      0%, 42% {
+        opacity: 1;
+      }
+
+      50%, 92% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes photo2 {
+      0%, 42% {
+        opacity: 0;
+      }
+
+      50%, 92% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
     }
 
     .hero-content {
+      width: 100%;
       max-width: 650px;
+      animation: appear 1s ease-out both;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .eyebrow {
@@ -256,10 +334,6 @@
       margin: auto;
     }
 
-    .about-image {
-      position: relative;
-    }
-
     .about-image img {
       width: 100%;
       height: 350px;
@@ -305,6 +379,12 @@
       border-radius: 10px;
       border-bottom: 4px solid var(--gold);
       box-shadow: 0 5px 22px rgba(41, 19, 62, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(41, 19, 62, 0.12);
     }
 
     .value-card .icon {
@@ -337,6 +417,11 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 8px 25px rgba(41, 19, 62, 0.09);
+      transition: transform 0.3s;
+    }
+
+    .school-life-card:hover {
+      transform: translateY(-5px);
     }
 
     .school-life-card img {
@@ -363,8 +448,7 @@
     /* APPEL À L'ACTION */
 
     .cta {
-      background:
-        linear-gradient(120deg, var(--violet-dark), var(--violet));
+      background: linear-gradient(120deg, var(--violet-dark), var(--violet));
       color: white;
       padding: 65px 8%;
       text-align: center;
@@ -424,6 +508,30 @@
       color: var(--gold);
     }
 
+    /* ACCESSIBILITÉ : limiter les animations si demandé */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .hero::before,
+      .hero::after,
+      .hero-content {
+        animation: none;
+      }
+
+      .hero::after {
+        display: none;
+      }
+
+      .value-card,
+      .school-life-card,
+      .button {
+        transition: none;
+      }
+    }
+
     /* TÉLÉPHONES ET TABLETTES */
 
     @media (max-width: 850px) {
@@ -434,7 +542,6 @@
 
       nav {
         justify-content: center;
-        flex-wrap: wrap;
         gap: 15px;
       }
 
@@ -445,6 +552,10 @@
       .hero {
         min-height: 500px;
         padding: 65px 7%;
+      }
+
+      .hero::before,
+      .hero::after {
         background-position: center;
       }
 
@@ -569,9 +680,8 @@
 
       <div class="about-grid">
         <div class="about-image">
-          <img
-            src="images.jfif"
-            alt="Bâtiment du Complexe scolaire Cardinal Malula">
+          <img src="images.jfif"
+               alt="Bâtiment du Complexe scolaire Cardinal Malula">
         </div>
 
         <div class="about-text">
@@ -648,9 +758,8 @@
 
       <div class="school-life-grid">
         <article class="school-life-card">
-          <img
-            src="images%20(1).jfif"
-            alt="Activité scolaire au Complexe scolaire Cardinal Malula">
+          <img src="images%20(1).jfif"
+               alt="Activité scolaire au Complexe scolaire Cardinal Malula">
 
           <div>
             <h3>La participation des élèves</h3>
@@ -663,9 +772,8 @@
         </article>
 
         <article class="school-life-card">
-          <img
-            src="images.jfif"
-            alt="Le cadre du Complexe scolaire Cardinal Malula">
+          <img src="images.jfif"
+               alt="Le cadre du Complexe scolaire Cardinal Malula">
 
           <div>
             <h3>Un cadre pour progresser</h3>
@@ -713,4 +821,4 @@
   </footer>
 
 </body>
-</html>1
+</html>
