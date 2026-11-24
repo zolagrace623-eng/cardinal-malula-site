@@ -1,277 +1,786 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notre école | Cardinal Malula</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Notre école | Complexe scolaire Cardinal Malula</title> <meta name="description" content="Découvrez le Complexe scolaire Cardinal Malula à Kinshasa-Limete, ses valeurs, sa vision et son engagement éducatif."> <style>
+    :root {
+      --violet: #54247a;
+      --violet-dark: #29133e;
+      --violet-light: #eee5f7;
+      --gold: #d5ad60;
+      --white: #ffffff;
+      --text: #282334;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #172033;
-            line-height: 1.7;
-        }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #faf8fc;
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-        header {
-            background: #102a43;
-            color: white;
-            padding: 20px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    a {
+      text-decoration: none;
+    }
 
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-        }
+    /* EN-TÊTE */
 
-        header a {
-            color: white;
-            text-decoration: none;
-        }
+    header {
+      background: white;
+      padding: 16px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 3px 18px rgba(41, 19, 62, 0.08);
+      position: relative;
+      z-index: 100;
+    }
 
-        .hero {
-            background: linear-gradient(135deg, #102a43, #2563eb);
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
+    .brand-symbol {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--violet);
+      font-size: 19px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
 
-        .hero p {
-            font-size: 19px;
-        }
+    .brand h2 {
+      font-size: 16px;
+      line-height: 1.3;
+      color: var(--violet-dark);
+    }
 
-        section {
-            padding: 65px 8%;
-        }
+    .brand p {
+      font-size: 11px;
+      color: #92713c;
+      letter-spacing: 1px;
+    }
 
-        .title {
-            font-size: 30px;
-            text-align: center;
-            color: #102a43;
-            margin-bottom: 25px;
-        }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
 
-        .intro {
-            background: white;
-            text-align: center;
-        }
+    nav a {
+      color: var(--text);
+      font-size: 13px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
 
-        .intro p {
-            max-width: 850px;
-            margin: auto;
-            color: #667085;
-        }
+    nav a:hover {
+      color: var(--violet);
+    }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 22px;
-        }
+    .nav-button {
+      background: var(--violet);
+      color: white !important;
+      padding: 11px 17px;
+      border-radius: 7px;
+    }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 14px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-            text-align: center;
-        }
+    .nav-button:hover {
+      background: var(--violet-dark);
+    }
 
-        .card h3 {
-            color: #102a43;
-            margin-bottom: 12px;
-        }
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      background: var(--violet);
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .card p {
-            color: #667085;
-        }
+    /* BANNIÈRE */
 
-        .vision {
-            background: #102a43;
-            color: white;
-            text-align: center;
-        }
+    .hero {
+      min-height: 420px;
+      padding: 90px 8%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      color: white;
+      background: var(--violet-dark);
+    }
 
-        .vision .title {
-            color: white;
-        }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(31, 15, 47, 0.94),
+          rgba(84, 36, 122, 0.78)
+        ),
+        url("images.jfif") center/cover no-repeat;
+      transform: scale(1.02);
+    }
 
-        .vision p {
-            max-width: 800px;
-            margin: auto;
-            color: #dbeafe;
-        }
+    .hero-content {
+      max-width: 800px;
+    }
 
-        .levels {
-            background: #eef4ff;
-        }
+    .eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
 
-        .back {
-            display: inline-block;
-            background: white;
-            color: #102a43;
-            padding: 12px 22px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 25px;
-        }
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
 
-        footer {
-            background: #102a43;
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
+    .hero h1 span {
+      color: var(--gold);
+    }
 
-        @media(max-width: 600px) {
-            .hero h1 {
-                font-size: 31px;
-            }
+    .hero p {
+      color: #eee7f4;
+      font-size: 17px;
+    }
 
-            header {
-                flex-direction: column;
-                gap: 12px;
-            }
+    .hero .motto {
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      margin-top: 16px;
+    }
 
-            section {
-                padding: 50px 6%;
-            }
-        }
-    </style>
-</head>
+    /* SECTIONS */
 
-<body>
+    section {
+      padding: 75px 8%;
+    }
 
-<header>
-    <div class="logo">CARDINAL MALULA</div>
-    <a href="index.html">← Retour à l'accueil</a>
-</header>
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 42px;
+    }
 
-<div class="hero">
-    <h1>Bienvenue chez nous</h1>
+    .section-heading span {
+      color: #98713c;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .title {
+      color: var(--violet-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(29px, 4vw, 40px);
+      line-height: 1.25;
+      margin: 12px 0;
+    }
+
+    .section-heading p {
+      color: #706879;
+      font-size: 15px;
+    }
+
+    /* PRÉSENTATION */
+
+    .intro {
+      background: white;
+      text-align: center;
+    }
+
+    .intro-content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .intro-content p {
+      color: #686170;
+      font-size: 16px;
+    }
+
+    .intro-line {
+      width: 65px;
+      height: 3px;
+      background: var(--gold);
+      margin: 25px auto 0;
+      border-radius: 5px;
+    }
+
+    /* VALEURS */
+
+    .values {
+      background: #faf8fc;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 23px;
+      border-radius: 12px;
+      border-bottom: 4px solid var(--gold);
+      box-shadow: 0 5px 22px rgba(41, 19, 62, 0.06);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(41, 19, 62, 0.12);
+    }
+
+    .card .icon {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: var(--violet);
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #706879;
+      font-size: 14px;
+    }
+
+    /* VISION */
+
+    .vision {
+      background:
+        linear-gradient(
+          120deg,
+          var(--violet-dark),
+          var(--violet)
+        );
+      color: white;
+      text-align: center;
+    }
+
+    .vision .title {
+      color: white;
+    }
+
+    .vision p {
+      max-width: 850px;
+      margin: auto;
+      color: #eee7f4;
+      font-size: 16px;
+    }
+
+    .vision-line {
+      width: 65px;
+      height: 3px;
+      background: var(--gold);
+      margin: 25px auto 0;
+      border-radius: 5px;
+    }
+
+    /* FORMATIONS */
+
+    .levels {
+      background: var(--violet-light);
+    }
+
+    .levels .card {
+      border-bottom: none;
+      border-top: 4px solid var(--gold);
+      text-align: left;
+    }
+
+    .levels .card h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 19px;
+    }
+
+    /* APPEL À L'ACTION */
+
+    .cta {
+      background: white;
+      text-align: center;
+      padding: 65px 8%;
+    }
+
+    .cta h2 {
+      color: var(--violet-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 38px);
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #706879;
+      max-width: 650px;
+      margin: 0 auto 25px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .button-gold {
+      background: var(--violet);
+      color: white;
+      border: 1px solid var(--gold);
+    }
+
+    .button-gold:hover {
+      background: var(--gold);
+      color: var(--violet-dark);
+      transform: translateY(-3px);
+    }
+
+    /* PIED DE PAGE */
+
+    footer {
+      background: #1d1029;
+      color: #ddd3e6;
+      padding: 38px 8%;
+      text-align: center;
+    }
+
+    footer h3 {
+      color: white;
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 8px;
+    }
+
+    footer .footer-motto {
+      color: var(--gold);
+      font-style: italic;
+      margin: 8px 0;
+    }
+
+    footer p {
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .footer-links a {
+      color: white;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* ACCESSIBILITÉ */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .card,
+      .button {
+        transition: none;
+      }
+    }
+
+    /* TABLETTES ET TÉLÉPHONES */
+
+    @media (max-width: 950px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 850px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 14px 5%;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 18px 6% 22px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        box-shadow: 0 10px 18px rgba(41, 19, 62, 0.12);
+        border-top: 1px solid var(--violet-light);
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        display: block;
+        padding: 12px 8px;
+        font-size: 14px;
+        border-bottom: 1px solid #f0ebf4;
+      }
+
+      nav .nav-button {
+        text-align: center;
+        margin-top: 12px;
+        border-bottom: none;
+      }
+
+      .hero {
+        min-height: 380px;
+        padding: 70px 7%;
+      }
+
+      section {
+        padding: 55px 7%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .brand h2 {
+        font-size: 14px;
+      }
+
+      .brand-symbol {
+        width: 43px;
+        height: 43px;
+      }
+
+      .hero {
+        min-height: 350px;
+        padding: 60px 6%;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 27px 22px;
+      }
+    }
+  </style></head><body> <!-- EN-TÊTE --> <header>
+    <a href="index.html" class="brand">
+      <div class="brand-symbol">CM</div> <div>
+    <h2>COMPLEXE SCOLAIRE<br>CARDINAL MALULA</h2>
+    <p>KINSHASA · LIMETE</p>
+  </div>
+</a>
+
+<button class="menu-toggle"
+        id="menuToggle"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="mainNav">
+  ☰
+</button>
+
+<nav id="mainNav">
+  <a href="index.html">Accueil</a>
+  <a href="ecole.html">Notre école</a>
+  <a href="formations.html">Formations</a>
+  <a href="index.html#valeurs">Nos valeurs</a>
+  <a href="actualites.html">Actualités</a>
+  <a href="contact.html">Contact</a>
+  <a href="actualites.html" class="nav-button">Découvrir</a>
+</nav>
+
+  </header> <main><!-- BANNIÈRE -->
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">Notre établissement</span>
+
+    <h1>
+      Bienvenue <span>chez nous.</span>
+    </h1>
+
     <p>Complexe scolaire Cardinal Malula</p>
-    <p><strong>Le meilleur est ma destinée.</strong></p>
-</div>
+
+    <p class="motto">
+      « Le meilleur est ma destinée. »
+    </p>
+  </div>
+</section>
+
+<!-- PRÉSENTATION -->
 
 <section class="intro">
-    <h2 class="title">Qui sommes-nous ?</h2>
+  <div class="intro-content">
+
+    <div class="section-heading">
+      <span>À propos de nous</span>
+      <h2 class="title">Qui sommes-nous ?</h2>
+    </div>
 
     <p>
-        Le Complexe scolaire Cardinal Malula est un établissement
-        d'enseignement situé à Kinshasa, en République démocratique
-        du Congo. Notre engagement est d'accompagner les élèves
-        dans leur formation scolaire et leur développement personnel.
-        Nous croyons en une éducation fondée sur le travail,
-        la discipline, le respect et l'excellence.
+      Le Complexe scolaire Cardinal Malula est un établissement
+      d'enseignement situé à Kinshasa, en République démocratique
+      du Congo. Notre engagement est d'accompagner les élèves
+      dans leur formation scolaire et leur développement personnel.
+      Nous croyons en une éducation fondée sur le travail,
+      la discipline, le respect et l'excellence.
     </p>
+
+    <div class="intro-line"></div>
+  </div>
 </section>
 
-<section>
+<!-- VALEURS -->
+
+<section class="values">
+
+  <div class="section-heading">
+    <span>Ce qui nous définit</span>
     <h2 class="title">Nos valeurs fondamentales</h2>
+    <p>
+      Des principes essentiels qui guident notre engagement
+      envers la formation et la réussite des élèves.
+    </p>
+  </div>
 
-    <div class="cards">
+  <div class="cards">
 
-        <div class="card">
-            <h3>🎓 Excellence</h3>
-            <p>
-                Encourager chaque élève à développer ses compétences
-                et à viser la réussite.
-            </p>
-        </div>
+    <article class="card">
+      <div class="icon">🎓</div>
+      <h3>Excellence</h3>
+      <p>
+        Encourager chaque élève à développer ses compétences
+        et à viser la réussite.
+      </p>
+    </article>
 
-        <div class="card">
-            <h3>🤝 Respect</h3>
-            <p>
-                Cultiver le respect mutuel, la solidarité
-                et la bonne conduite.
-            </p>
-        </div>
+    <article class="card">
+      <div class="icon">🤝</div>
+      <h3>Respect</h3>
+      <p>
+        Cultiver le respect mutuel, la solidarité
+        et la bonne conduite.
+      </p>
+    </article>
 
-        <div class="card">
-            <h3>📚 Discipline</h3>
-            <p>
-                Promouvoir le sérieux, l'organisation
-                et le goût du travail.
-            </p>
-        </div>
+    <article class="card">
+      <div class="icon">📚</div>
+      <h3>Discipline</h3>
+      <p>
+        Promouvoir le sérieux, l'organisation
+        et le goût du travail.
+      </p>
+    </article>
 
-        <div class="card">
-            <h3>🌟 Responsabilité</h3>
-            <p>
-                Préparer les élèves à devenir des citoyens
-                responsables et engagés.
-            </p>
-        </div>
+    <article class="card">
+      <div class="icon">🌟</div>
+      <h3>Responsabilité</h3>
+      <p>
+        Préparer les élèves à devenir des citoyens
+        responsables et engagés.
+      </p>
+    </article>
 
-    </div>
+  </div>
 </section>
+
+<!-- VISION -->
 
 <section class="vision">
-    <h2 class="title">Notre vision</h2>
 
-    <p>
-        Former une jeunesse instruite, ambitieuse et responsable,
-        capable de contribuer positivement au développement
-        de la société et de construire un avenir meilleur.
-    </p>
+  <div class="section-heading">
+    <span>Notre ambition</span>
+    <h2 class="title">Notre vision</h2>
+  </div>
+
+  <p>
+    Former une jeunesse instruite, ambitieuse et responsable,
+    capable de contribuer positivement au développement
+    de la société et de construire un avenir meilleur.
+  </p>
+
+  <div class="vision-line"></div>
 </section>
+
+<!-- ENGAGEMENT ÉDUCATIF -->
 
 <section class="levels">
+
+  <div class="section-heading">
+    <span>Notre parcours éducatif</span>
     <h2 class="title">Notre engagement éducatif</h2>
+    <p>
+      Un accompagnement adapté aux différents parcours
+      de formation proposés dans notre établissement.
+    </p>
+  </div>
 
-    <div class="cards">
+  <div class="cards">
 
-        <div class="card">
-            <h3>Éducation de base</h3>
-            <p>Accompagner les élèves dans l'acquisition
-            des connaissances fondamentales.</p>
-        </div>
+    <article class="card">
+      <div class="icon">📖</div>
+      <h3>Éducation de base</h3>
+      <p>
+        Accompagner les élèves dans l'acquisition
+        des connaissances fondamentales.
+      </p>
+    </article>
 
-        <div class="card">
-            <h3>Humanités scientifiques</h3>
-            <p>Développer la réflexion, l'analyse
-            et l'esprit scientifique.</p>
-        </div>
+    <article class="card">
+      <div class="icon">🔬</div>
+      <h3>Humanités scientifiques</h3>
+      <p>
+        Développer la réflexion, l'analyse
+        et l'esprit scientifique.
+      </p>
+    </article>
 
-        <div class="card">
-            <h3>Humanités littéraires</h3>
-            <p>Valoriser la culture, les langues
-            et les capacités d'expression.</p>
-        </div>
+    <article class="card">
+      <div class="icon">✍️</div>
+      <h3>Humanités littéraires</h3>
+      <p>
+        Valoriser la culture, les langues
+        et les capacités d'expression.
+      </p>
+    </article>
 
-        <div class="card">
-            <h3>Humanités commerciales</h3>
-            <p>Développer les connaissances économiques
-            et commerciales.</p>
-        </div>
+    <article class="card">
+      <div class="icon">📊</div>
+      <h3>Humanités commerciales</h3>
+      <p>
+        Développer les connaissances économiques
+        et commerciales.
+      </p>
+    </article>
 
-    </div>
+  </div>
 </section>
 
-<footer>
-    <p><strong>Complexe scolaire Cardinal Malula</strong></p>
-    <p>Le meilleur est ma destinée.</p>
-    <p>Kinshasa, RDC</p>
-    <p>© 2026 — Tous droits réservés.</p>
-</footer>
+<!-- APPEL À L'ACTION -->
 
-</body>
+<section class="cta">
+  <h2>Construisons ensemble l'avenir.</h2>
+
+  <p>
+    Découvrez nos formations, nos actualités
+    et les activités du Complexe scolaire Cardinal Malula.
+  </p>
+
+  <a href="formations.html" class="button button-gold">
+    Découvrir nos formations →
+  </a>
+</section>
+
+  </main> <!-- PIED DE PAGE --> <footer>
+    <h3>Complexe scolaire Cardinal Malula</h3><p>Kinshasa · Limete · République démocratique du Congo</p>
+
+<p class="footer-motto">
+  « Le meilleur est ma destinée. »
+</p>
+
+<div class="footer-links">
+  <a href="index.html">Accueil</a>
+  <a href="ecole.html">Notre école</a>
+  <a href="formations.html">Formations</a>
+  <a href="actualites.html">Actualités</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<p>
+  © 2026 Complexe scolaire Cardinal Malula.
+  Tous droits réservés.
+</p>
+
+  </footer> <!-- MENU MOBILE --> <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = mainNav.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", isOpen);
+
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Fermer le menu" : "Ouvrir le menu"
+      );
+
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+  </script></body>
 </html>
