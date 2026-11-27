@@ -32,8 +32,6 @@
         line-height: 1.6;
     }
 
-    /* NAVIGATION */
-
     header {
         background: var(--white);
         padding: 17px 6%;
@@ -93,8 +91,6 @@
         cursor: pointer;
     }
 
-    /* HERO */
-
     .hero {
         min-height: 370px;
         background:
@@ -136,8 +132,6 @@
         border-radius: 5px;
     }
 
-    /* SECTIONS */
-
     section {
         padding: 75px 8%;
     }
@@ -170,8 +164,6 @@
         color: var(--muted);
         line-height: 1.8;
     }
-
-    /* COORDONNÉES */
 
     .contact-grid {
         display: grid;
@@ -210,8 +202,6 @@
         color: var(--muted);
         line-height: 1.8;
     }
-
-    /* FORMULAIRE */
 
     .message-section {
         background: var(--violet-light);
@@ -281,7 +271,24 @@
         color: var(--violet-dark);
     }
 
-    /* FOOTER */
+    .button:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+    }
+
+    #formStatus {
+        margin-top: 18px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #formStatus.success {
+        color: #218838;
+    }
+
+    #formStatus.error {
+        color: #c62828;
+    }
 
     footer {
         background: var(--violet-dark);
@@ -300,8 +307,6 @@
         color: var(--gold);
         font-size: 17px;
     }
-
-    /* RESPONSIVE */
 
     @media (max-width: 900px) {
         nav {
@@ -385,7 +390,9 @@
             width: 100%;
         }
     }
-</style></head><body><header>
+</style>
+
+</head><body><header>
     <div class="logo">CARDINAL MALULA</div><button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
     ☰
 </button>
@@ -401,12 +408,10 @@
 </nav>
 
 </header><section class="hero">
-    <p class="eyebrow">Complexe scolaire Cardinal Malula</p><h1>Contactez-nous</h1>
-
-<p>Nous sommes à votre écoute.</p>
-
-<div class="gold-line"></div>
-
+    <p class="eyebrow">Complexe scolaire Cardinal Malula</p>
+    <h1>Contactez-nous</h1>
+    <p>Nous sommes à votre écoute.</p>
+    <div class="gold-line"></div>
 </section><section>
     <div class="section-heading">
         <p class="small-title">Restons en contact</p> <h2 class="title">Nos coordonnées</h2>
@@ -422,9 +427,7 @@
     <div class="info-card">
         <div class="info-icon">📍</div>
         <h3>Adresse</h3>
-        <p>
-            Kinshasa, République démocratique du Congo
-        </p>
+        <p>Kinshasa, République démocratique du Congo</p>
     </div>
 
     <div class="info-card">
@@ -453,37 +456,7 @@
 
 <div class="form-container">
 
-    <form
-        action="https://formsubmit.co/cscmalula69@gmail.com"
-        method="POST"
-    >
-
-        <input
-            type="hidden"
-            name="_subject"
-            value="Nouveau message - Site Cardinal Malula"
-        >
-
-        <input
-            type="hidden"
-            name="_template"
-            value="table"
-        >
-
-        <input
-            type="hidden"
-            name="_url"
-            value="https://zolagrace623-eng.github.io/cardinal-malula-site/contact.html"
-        >
-
-        <!-- Protection anti-spam -->
-        <input
-            type="text"
-            name="_honey"
-            style="display:none"
-            tabindex="-1"
-            autocomplete="off"
-        >
+    <form id="contactForm">
 
         <div class="form-group">
             <label for="nom">Nom complet</label>
@@ -522,9 +495,11 @@
             ></textarea>
         </div>
 
-        <button type="submit" class="button">
+        <button type="submit" class="button" id="sendButton">
             Envoyer le message
         </button>
+
+        <p id="formStatus" role="status" aria-live="polite"></p>
 
     </form>
 
@@ -537,7 +512,13 @@
 
 <p>© 2026 — Tous droits réservés.</p>
 
-</footer><script>
+</footer><!-- Bibliothèque EmailJS --><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script><script>
+    // Configuration EmailJS
+    emailjs.init({
+        publicKey: "XGnxvN-Y6uYHEp660"
+    });
+
+    // Menu mobile
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
 
@@ -548,6 +529,42 @@
     mainNav.querySelectorAll("a").forEach(function (link) {
         link.addEventListener("click", function () {
             mainNav.classList.remove("active");
+        });
+    });
+
+    // Formulaire de contact EmailJS
+    const contactForm = document.getElementById("contactForm");
+    const sendButton = document.getElementById("sendButton");
+    const formStatus = document.getElementById("formStatus");
+
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        sendButton.disabled = true;
+        sendButton.textContent = "Envoi en cours...";
+        formStatus.textContent = "";
+        formStatus.className = "";
+
+        emailjs.sendForm(
+            "service_pva0sh8",
+            "template_t2ul0ef",
+            contactForm
+        )
+        .then(function () {
+            formStatus.textContent = "Votre message a été envoyé avec succès. Merci de nous avoir contactés !";
+            formStatus.className = "success";
+
+            contactForm.reset();
+        })
+        .catch(function (error) {
+            console.error("Erreur EmailJS :", error);
+
+            formStatus.textContent = "L'envoi a échoué. Veuillez réessayer dans quelques instants.";
+            formStatus.className = "error";
+        })
+        .finally(function () {
+            sendButton.disabled = false;
+            sendButton.textContent = "Envoyer le message";
         });
     });
 </script></body>
